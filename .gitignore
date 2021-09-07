@@ -1,1 +1,3 @@
-.DS_Store
+*
+!.daily_management_laravel
+!.README.md
