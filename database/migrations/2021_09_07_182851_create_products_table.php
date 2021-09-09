@@ -23,8 +23,7 @@ class CreateProductsTable extends Migration
             $table->date('best_by_date');
             $table->date('use_by_date');
             $table->integer('account_id');
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at');
+            $table->timestamps();
         });
     }
 

@@ -18,9 +18,7 @@ class CreateAccountsTable extends Migration
             $table->string('account_name');
             $table->string('email');
             $table->string('password');
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at');
-            $table->
+            $table->timestamps();
         });
     }
 
