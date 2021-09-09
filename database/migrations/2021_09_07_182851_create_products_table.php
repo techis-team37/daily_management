@@ -20,7 +20,9 @@ class CreateProductsTable extends Migration
             $table->string('tag');
             $table->string('category');
             $table->integer('stock');
-            
+            $table->date('best_by_date');
+            $table->date('use_by_date');
+            $table->integer('account_id');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
         });
