@@ -37,9 +37,12 @@
     </div>
 
     <div class="btn-list">
-        <a href="" class="btn-area">新規登録</a>
+        <a href="" class="btn-area">
+            新規登録<span class="bg"></span>
+        </a>
         <div class="btn-area">
             <button class="btn" type="submit">ログイン</button>
+            <span class="bg"></span>
         </div>
     </div>
     </form>
