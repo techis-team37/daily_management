@@ -19,5 +19,6 @@ Route::resource('/account',['AccountController::class']);
 Route::resource('/product',['ProductController::class']);
 
 // develop inserted
+// develop insertion2
 
 // testing merge
