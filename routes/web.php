@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controller\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth/login');
+    return view('auth.login');
 });
 
-// Route::post('/login', App\Http\Controllers\, 'login') -> name('login');
+
+// -----------------------------
+//     ログイン
+// -----------------------------
+
+// ログイン画面の表示
+Route::get('/login',                    function(){ return view('auth.login'); });
+
+// ログイン機能の処理の実装
+Route::post('/login',                   [AccountController::class, 'account_login']);
+
+// -----------------------------
+//     登録
+// -----------------------------
+
+// 登録画面の表示
+Route::get('/register',                 function(){ return view('auth.register'); });
+
+// ログイン機能の処理の実装
+Route::post('/register',                [AccountController::class, 'account_register']);
