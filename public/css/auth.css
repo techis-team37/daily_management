@@ -1,0 +1,137 @@
+@charset "utf-8";
+
+html{
+    font-size: 10px;
+    font-family: 'Charter';
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #FFF8E0;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+#main{
+    width: 100%;
+}
+
+.auth-content{
+    width: 65%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+}
+
+.auth-content .form-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 70px;
+}
+
+.auth-content .form-header .title-area{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.auth-content .form-header .title-area .logo-area img{
+    width: 70px;
+    height: 70px;
+    margin-right: 30px;
+}
+
+.auth-content .form-header .title-area .project-title-area{
+    font-size: 5rem;
+}
+
+.auth-content .form-header .page-title{
+    font-size: 3rem;
+    font-weight: inherit;
+    border-bottom: 1px solid #000;
+}
+
+.auth-content .form-body{
+    width: 80%;
+    border: 1px solid #000;
+    padding: 100px 80px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.auth-content .form-body .input-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.auth-content .form-body .input-area:last-of-type{
+    margin-bottom: 0px;
+}
+
+.auth-content .form-body .input-area label{
+    display: block;
+    width: 140px;
+    margin-right: 30px;
+}
+
+.auth-content .form-body .input-area input{
+    border: 1px solid #000;
+    width: 70%;
+    padding: 5px 10px;
+}
+
+.auth-content .btn-list{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.auth-content .btn-area{
+    position: relative;
+    display: block;
+    width: 300px;
+    font-size: 3rem;
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+    margin-top: 40px;
+    overflow: hidden;
+    transition: all .3s;
+}
+
+.auth-content .bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #9E912B;
+    z-index: -10;
+    transform: translateX(-100%);
+    transition: all .5s;
+}
+
+.auth-content .btn-area:hover > .bg{
+    transform: translateX(0%);
+}
+
+.auth-content .btn-area:hover{
+    color: #fff;
+}
