@@ -1,0 +1,275 @@
+.content-title{
+    display: inline-block;
+    border-left: 5px solid #9E912B;
+    border-bottom: 5px solid #9E912B;
+    font-size: 2rem;
+    padding: 8px 10px;
+    margin-bottom: 50px;
+}
+
+#mypage{
+    flex-grow: 1;
+    margin-top: 50px;
+    padding: 0 50px;
+}
+
+#mypage #add-products-container{
+    margin-bottom: 80px;
+}
+
+#mypage #add-products-container .add-products-content{
+    position: relative;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #000;
+    border-radius: 45px;
+    text-align: center;
+    padding: 30px;
+}
+
+#mypage #add-products-container .add-products-content a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#mypage #add-products-container .add-products-content svg{
+    width: 80px;
+    height: 80px;
+    margin-bottom: 30px;
+}
+
+#mypage #add-products-container .add-products-content .add-products-title{
+    font-size: 3rem;
+    font-weight: inherit;
+}
+
+#graph{
+    margin-bottom: 80px;
+}
+
+#graph .graph-area{
+    width: 100%;
+}
+
+#graph .graph-area .graph-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+#graph .graph-area .graph-container .graph-content .graph-title{
+    font-size: 2rem;
+    writing-mode: vertical-rl;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#graph .graph-area .graph-container .graph-content .graph-item{
+    position: relative;
+    display: block;
+    width: 50px;
+    border: 1px solid #000;
+    margin: 0 5px;
+}
+
+#graph .graph-area .graph-container .graph-content .graph-item::after{
+    position: absolute;
+    left: -50px;
+    bottom: -1px;
+    display: block;
+    content: "";
+    width: 300%;
+    height: 1px;
+    background: #000;
+}
+
+#graph .graph-area .graph-container .graph-1 .graph-item{
+    height: 267px;
+    background: #F8FFA8;
+}
+#graph .graph-area .graph-container .graph-2 .graph-item{
+    height: 178px;
+    background: #F8FFA8;
+}
+#graph .graph-area .graph-container .graph-3 .graph-item{
+    height: 342px;
+    background: #AFFFAF;
+}
+#graph .graph-area .graph-container .graph-4 .graph-item{
+    height: 243px;
+    background: #F8FFA8;
+}
+#graph .graph-area .graph-container .graph-5 .graph-item{
+    height: 317px;
+    background: #AFFFAF;
+}
+#graph .graph-area .graph-container .graph-6 .graph-item{
+    height: 53px;
+    background: #FFA2A2;
+}
+#graph .graph-area .graph-container .graph-7 .graph-item{
+    height: 89px;
+    background: #FFA2A2;
+}
+#graph .graph-area .graph-container .graph-8 .graph-item{
+    height: 366px;
+    background: #AFFFAF;
+}
+#graph .graph-area .graph-container .graph-9 .graph-item{
+    height: 229px;
+    background: #F8FFA8;
+}
+#graph .graph-area .graph-container .graph-10 .graph-item{
+    height: 229px;
+    background: #F8FFA8;
+}
+
+#message .message-main-area{
+    text-align: center;
+}
+
+#message .message-main-area .message-container{
+    width: 70%;
+    height: 100%;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#message .message-main-area .message-container .message-item{
+    font-size: 2rem;
+    position: relative;
+    background: #fff;
+    margin-bottom: 30px;
+    height: 160px;
+}
+
+#message .message-main-area .message-container .message-item .message-content{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+#message .message-main-area .message-container .message-item .message-content .name{
+    border-bottom: 1px solid #000;
+    margin-right: 30px;
+}
+
+#message .message-main-area .message-container .message-item .body{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.more-btn{
+    position: relative;
+    display: inline-block;
+    border: 1px solid #000;
+    padding: 20px 40px;
+    border-radius: 100vh;
+    font-size: 2rem;
+    margin: 30px 0;
+    overflow: hidden;
+    transition: all .5s;
+}
+
+.more-btn .bg{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #9E912B;
+    z-index: -10;
+    border-radius: 100vh;
+    transition: all .5s;
+}
+
+.more-btn:hover{
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.more-btn:hover > .bg{
+    left: 0;
+}
+
+#products{
+    width: 100%;
+}
+
+#products .products-area{
+    text-align: center;
+}
+
+#products .products-area .products-container .products-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #fff;
+    margin-bottom: 50px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+}
+
+#products .products-area .products-container .products-content img{
+    width: 200px;
+    height: 200px;
+}
+
+#products .products-area .products-container .products-content .product-text-item{
+    position: relative;
+    flex-grow: 1;
+}
+
+#products .products-area .products-container .products-content .category{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2rem;
+    border-bottom: 1px solid #000;
+    margin-left: 20px;
+}
+
+#products .products-area .products-container .products-content .product-title{
+    text-align: center;
+    font-size: 2.6rem;
+    margin-top: 80px;
+}
+
+#products .products-area .products-container .products-content .product-time{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+
+#products .products-area .products-container .products-content .product-time .product-time-title{
+    font-size: 1.8rem;
+    margin-right: 10px;
+}
+
+#products .products-area .products-container .products-content .product-time .product-time-date{
+    font-size: 1.5rem;
+}
+
+#products .products-area .products-container .products-content .quantity{
+    font-size: 2.3rem;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-top: 40px;
+}
+
+#products .products-area .products-container .products-content .quantity .quantity-title{
+    margin-right: 50px;
+}
