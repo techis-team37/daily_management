@@ -163,7 +163,6 @@
 }
 
 #message .message-main-area .message-container .message-item .body{
-    text-align: center;
     margin-top: 30px;
 }
 
@@ -241,7 +240,6 @@
 }
 
 #products .products-area .products-container .products-content .product-title{
-    text-align: center;
     font-size: 2.6rem;
     margin-top: 80px;
 }

@@ -4,7 +4,7 @@
 
 <section id="product-add">
 
-    <h2 class="product-title">日用品登録</h2>
+    <h2 class="product-main-title">日用品登録</h2>
     <div class="product-add-form">
         <form action="" method="POST">
         @csrf
