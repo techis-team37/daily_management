@@ -7,6 +7,7 @@
     <title>daily management</title>
     <link rel="stylesheet" href="{{asset('css/all.css')}}">
     <link rel="stylesheet" href="{{asset('css/mypage.css')}}">
+    <link rel="stylesheet" href="{{asset('css/product.css')}}">
     <link rel="icon" href="{{ asset('img/logo.png') }}">
     <!-- リセットCSSの読み込み -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">

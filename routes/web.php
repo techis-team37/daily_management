@@ -15,7 +15,7 @@ use App\Http\Controller\AccountController;
 */
 
 Route::get('/', function () {
-    return view('mypage');
+    return view('products.product-add');
 });
 
 

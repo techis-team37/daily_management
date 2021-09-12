@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+#product-add{
+    width: 100%;
+    height: 100%;
+    padding: 50px 80px;
+}
+
+.product-title{
+    font-size: 3rem;
+    line-height: 1;
+    border-left: 5px solid #FFC600;
+    padding-left: 10px;
+    margin-bottom: 100px;
+}
+
+.product-add-form .file-area{
+    position: relative;
+    border: 1px solid #000;
+    padding: 30px;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 2.5rem;
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #FFF8E0;
+    z-index: 10;
+}
+
+.product-add-form .file-area input{
+    display: none;
+}
+
+.product-add-form .file-area svg{
+    width: 100px;
+    height: 100px;
+}
+
+.product-add-form .input-text{
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 50px;
+    position: relative;
+    top: -100px;
+    z-index: 0;
+    padding: 100px 50px 50px;
+}
+
+.product-add-form .input-text .input-area{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.product-add-form .input-text .input-area img{
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    transform: translate(20%, -50%);
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+
+.product-add-form .input-text .input-area label{
+    font-size: 2.5rem;
+    width: 125px;
+}
+
+.product-add-form .input-text .input-area input, .product-add-form .input-text .input-area select{
+    display: block;
+    width: 50%;
+    border: 1px solid #000;
+    border-radius: 100vh;
+    padding: 5px 20px;
+    margin: 20px 0;
+    font-size: 2rem;
+    margin-left: 30px;
+}
+
+.product-add-form .input-text .input-area select{
+    cursor: pointer;
+}
+
+.product-add-form .btn-area{
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
