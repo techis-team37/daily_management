@@ -15,5 +15,5 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::resource('/account',['AccountController::class']);
-Route::resource('/product',['ProductController::class']);
+Route::resource('/account',AccountController::class);
+Route::resource('/product',ProductController::class);
