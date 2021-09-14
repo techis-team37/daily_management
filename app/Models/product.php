@@ -9,6 +9,11 @@ class Product extends Model
 {
     use HasFactory;
 
+    public function accounts()
+    {
+        return $this->hasMany('App\Account');
+    }
+
     /**
      * 
      * 

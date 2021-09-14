@@ -17,3 +17,5 @@ use App\Http\Controllers\ProductController;
 
 Route::resource('/account',AccountController::class);
 Route::resource('/product',ProductController::class);
+Route::get('/product',[ProductController::class, 'index']);
+Route::get('/create',[ProductController::class, 'store']);
