@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class AccountController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * マイページ画面を表示させる処理
      *
      * @return \Illuminate\Http\Response
      */
@@ -18,68 +18,40 @@ class AccountController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 会員登録をする処理
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function register(Request $request)
     {
-        //
+        $this->validate($request,[
+           
+        
+    }
     }
 
     /**
-     * Store a newly created resource in storage.
+     * ログインをする処理
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function login(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
+        $account = Account::where('email', $request->email)->get();
+        if (count($account) === 0){
+            return view('login', ['login_error' => '1']);
+        }
+        
+        // 一致
+        if (Hash::check($request->password, $account[0]->password)) {
+            
+            // セッション
+            session(['name'  => $account[0]->name]);
+            session(['email' => $account[0]->email]);
+            
+            // フラッシュ
+            session()->flash('flash_flg', 1);
+            session()->flash('flash_msg', 'ログインしました。');
         //
     }
 }
