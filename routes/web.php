@@ -18,8 +18,13 @@ use App\Http\Controllers\ProductController;
 //Route::resource('/account',AccountController::class);
 Route::resource('/product',ProductController::class);
 
+
 Route::get('account/view',[AccountController::class,'create']);
 
 Route::post('register',[AccountController::class,'register']);
 Route::post('login',[AccountController::class,'login']);
 Route::view('mypage',[AccountController::class,'index']);
+
+Route::get('/product',[ProductController::class, 'index']);
+Route::get('/create',[ProductController::class, 'store']);
+

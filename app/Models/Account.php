@@ -9,6 +9,11 @@ class Account extends Model
 {
     use HasFactory;
 
+    public function product()
+    {
+        return $this->belongsTo('App\Product');
+    }
+
     /**
      * 
      * @ver array

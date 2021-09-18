@@ -7,15 +7,7 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
-    /**
-     * マイページ画面を表示させる処理
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+   
 
     /**
      * 会員登録をする処理
@@ -25,9 +17,17 @@ class AccountController extends Controller
     public function register(Request $request)
     {
         $this->validate($request,[
-           
-        
-    }
+            'account_name'=>'required|max:20',   
+            'email'=>'required|email|max:255',
+            'password'=>'required|max:128',
+        ]);
+
+        //会員登録作成
+        Account::create([
+            'account_name'=> $request->account_name,
+            'email'=> $request->email,
+            'password'=>$request->password,
+        ]);
     }
 
     /**

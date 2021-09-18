@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// use App\Models\Product;
-use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -17,11 +16,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $id = Auth::id();
+        // $id = Auth::id();
+        $id = 1;
 
-        $products = DB::table('Products')
-            ->where('product_id', $id)
-            ->get();
+        $products = Product::where('account_id', $id)->get();
 
         return view('mypage',[
             'products' => $products,
@@ -35,7 +33,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('/create');
     }
 
     /**
@@ -46,7 +44,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product;
+
+        $product->product_name = $request->product_name;
+        $product->image = $request->image;
+        $product->tag = $request->tag;
+        $product->category = $request->category;
+        $product->stock = $request->stock;
+        $product->best_by_date = $request->best_by_date;
+        $product->use_by_date = $request->use_by_date;
+        $product->account_id = $request->account_id;
+        $product->save();
+
+        return redirect('/product');
     }
 
     /**
