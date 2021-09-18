@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Account;
 
 class AccountController extends Controller
 {
@@ -18,7 +20,7 @@ class AccountController extends Controller
     {
         $this->validate($request,[
             'account_name'=>'required|max:20',   
-            'email'=>'required|email|max:255',
+            'email'=>'required|email|min:8|max:255',
             'password'=>'required|max:128',
         ]);
 
@@ -26,7 +28,7 @@ class AccountController extends Controller
         Account::create([
             'account_name'=> $request->account_name,
             'email'=> $request->email,
-            'password'=>$request->password,
+            'password'=> $request->password,
         ]);
     }
 
@@ -53,5 +55,5 @@ class AccountController extends Controller
             session()->flash('flash_flg', 1);
             session()->flash('flash_msg', 'ログインしました。');
         //
-    }
+    }}
 }
