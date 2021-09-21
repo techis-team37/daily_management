@@ -23,7 +23,6 @@ Route::post('register',[AccountController::class,'register']);
 Route::post('login',[AccountController::class,'login']);
 //Route::view('mypage',[AccountController::class,'index']);
 
-Route::resource('/account',AccountController::class);
 // Route::resource('/product',ProductController::class);
 // 商品一覧画面を表示
 Route::get('/product/{account_id}',[ProductController::class, 'index']);
