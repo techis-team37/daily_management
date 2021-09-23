@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ProductController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,3 +39,4 @@ Route::get('/edit/{product_id}',[ProductController::class, 'edit']);
 Route::PUT('/update',[ProductController::class, 'update']);
 // 登録商品の削除
 Route::get('/delete/{product_id}',[ProductController::class, 'destroy']);
+
