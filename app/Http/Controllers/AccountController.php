@@ -47,6 +47,7 @@ class AccountController extends Controller
         // 一致
         if (Hash::check($request->password, $account[0]->password)) {
             
+            
             // セッション
             session(['name'  => $account[0]->name]);
             session(['email' => $account[0]->email]);
@@ -55,5 +56,13 @@ class AccountController extends Controller
             session()->flash('flash_flg', 1);
             session()->flash('flash_msg', 'ログインしました。');
         //
-    }}
+            return redirect('mypage');
+   
+        // 一致しなかった場合
+        }else{
+            $msg = 'パスワードが一致しません';
+            return view('login',['msg' => $msg]);
+        }
+        
+    }
 }
