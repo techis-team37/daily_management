@@ -16,13 +16,29 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+Route::get('/',function (){
+    return view('auth.login');
+});
+
+
 //Route::resource('/account',AccountController::class);
 
 //Route::get('account/view',[AccountController::class,'create']);
 
+Route::get('register',function (){
+    return view('auth.register');
+});
+
 Route::post('register',[AccountController::class,'register']);
+Route::get('register',function (){return view('auth.register');});
 Route::post('login',[AccountController::class,'login']);
+Route::get('login',function (){return view('auth.login');});
 //Route::view('mypage',[AccountController::class,'index']);
+
+Route::get('mypage/{id}/{mypage}',[AccountController::class,'index']);
+Route::get('products',function (){return view('products.products');});
+Route::get('contact',function (){return view('contact');});
+
 
 // Route::resource('/product',ProductController::class);
 // 商品一覧画面を表示
@@ -30,7 +46,7 @@ Route::get('/product/{account_id}',[ProductController::class, 'index']);
 // 商品登録画面を表示
 Route::get('/create',[ProductController::class, 'create']);
 // 商品登録の保存
-Route::post('/store',ProductController::class, 'store');
+Route::post('/store',[ProductController::class, 'store']);
 // 商品個別ページの表示
 Route::get('/show/{product_id}',[ProductController::class, 'show']);
 // 商品編集画面の表示

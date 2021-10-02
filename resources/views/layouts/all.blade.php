@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 </head>
 <body>
+
     <header id="main-header">
         <div class="header-content">
             <div class="project-title-area">
@@ -75,7 +76,7 @@
                     </g>
                 </svg>
                 <div class="account">
-                    <p class="account-name">アカウント名</p>
+                    <p class="account-name">{{ $account[0] -> account_name }}</p>
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve">
                         <polygon points="245,456.701 490,33.299 0,33.299 "/>
@@ -119,7 +120,7 @@
             <ul class="nav-content">
 
                 <li class="nav-item item-1">
-                    <a href=""></a>
+                    <a href="{{ url('/mypage/' . $account[0] -> account_id . '/' . 'account') }}"></a>
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 490.667 490.667" style="enable-background:new 0 0 490.667 490.667;" xml:space="preserve">
                         <g>
@@ -177,7 +178,7 @@
                     <p class="nav-item-text">マイページ</p>
                 </li>
                 <li class="nav-item item-2">
-                    <a href=""></a>
+                    <a href="{{ url('/products') }}"></a>
                     <svg id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
                         <g>
                             <path d="m397.006 43.903h-18.941v-20.403c0-12.958-10.542-23.5-23.5-23.5h-209.72c-4.143 0-7.5 3.357-7.5 7.5s3.357 7.5 7.5 7.5h209.72c4.687 0 8.5 3.813 8.5 8.5v20.403h-295.283c-12.958 0-23.5 10.542-23.5 23.5v385.693h-18.94c-4.687 0-8.5-3.813-8.5-8.5v-421.096c0-4.687 3.813-8.5 8.5-8.5h84.419c4.143 0 7.5-3.357 7.5-7.5s-3.357-7.5-7.5-7.5h-84.419c-12.958 0-23.5 10.542-23.5 23.5v421.097c0 12.958 10.542 23.5 23.5 23.5h18.94v20.403c0 12.958 10.542 23.5 23.5 23.5h329.224c12.958 0 23.5-10.542 23.5-23.5v-421.097c0-12.958-10.542-23.5-23.5-23.5zm8.5 444.597c0 4.687-3.813 8.5-8.5 8.5h-329.224c-4.687 0-8.5-3.813-8.5-8.5 0-4.864 0-416.153 0-421.097 0-4.687 3.813-8.5 8.5-8.5h329.224c4.687 0 8.5 3.813 8.5 8.5z"/>
@@ -199,7 +200,7 @@
                     <p class="nav-item-text">日用品</p>
                 </li>
                 <li class="nav-item item-3">
-                    <a href=""></a>
+                    <a href="{{ url('/contact') }}"></a>
                     <svg id="Capa_1" enable-background="new 0 0 511.072 511.072" height="512" viewBox="0 0 511.072 511.072" width="512" xmlns="http://www.w3.org/2000/svg">
                         <g id="Speech_Bubble_48_">
                             <g>

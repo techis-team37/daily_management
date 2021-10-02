@@ -19,7 +19,7 @@ class AccountController extends Controller
     public function register(Request $request)
     {
         $this->validate($request,[
-            'account_name'=>'required|max:20',   
+            'account_name'=>'required|max:20',
             'email'=>'required|email|min:8|max:255',
             'password'=>'required|max:128',
         ]);
@@ -28,8 +28,10 @@ class AccountController extends Controller
         Account::create([
             'account_name'=> $request->account_name,
             'email'=> $request->email,
-            'password'=> $request->password,
+            'password'=> Hash::make($request->password),
         ]);
+
+        return view('auth.login');
     }
 
     /**
@@ -39,21 +41,25 @@ class AccountController extends Controller
      */
     public function login(Request $request)
     {
-        $account = Account::where('email', $request->email)->get();
-        if (count($account) === 0){
+        $account[] = Account::where('email', $request->email)->first();
+        if (count($account) == 0){
             return view('login', ['login_error' => '1']);
         }
-        
+
         // 一致
-        if (Hash::check($request->password, $account[0]->password)) {
-            
+        if (Hash::check($request -> password, $account[0] -> password)) {
+
             // セッション
             session(['name'  => $account[0]->name]);
             session(['email' => $account[0]->email]);
-            
+
             // フラッシュ
             session()->flash('flash_flg', 1);
             session()->flash('flash_msg', 'ログインしました。');
-        //
-    }}
+
+            return view('mypage', compact('account', 'account'));
+        }else{
+            return view('login', ['login_error' => '2']);
+        }
+    }
 }

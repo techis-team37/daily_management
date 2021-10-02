@@ -31,7 +31,7 @@
         </div>
         <div class="input-area">
             <label for="pass">メールアドレス</label>
-            <input type="password" id="pass" class="form-content" name="email" required>
+            <input type="email" id="mail" class="form-content" name="email" required>
         </div>
         <div class="input-area">
             <label for="pass">パスワード</label>
