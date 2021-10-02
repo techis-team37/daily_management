@@ -29,11 +29,13 @@ Route::get('register',function (){
     return view('auth.register');
 });
 
-Route::post('register',[AccountController::class,'register']);
 Route::get('register',function (){return view('auth.register');});
 Route::post('login',[AccountController::class,'login']);
-Route::get('login',function (){return view('auth.login');});
-//Route::view('mypage',[AccountController::class,'index']);
+
+Route::get('register',function(){return view('auth.register');});
+Route::get('login', function(){return view('auth.login');});
+
+Route::get('mypage', function(){return view('mypage');});
 
 Route::get('mypage/{id}/{mypage}',[AccountController::class,'index']);
 Route::get('products',function (){return view('products.products');});
@@ -55,4 +57,3 @@ Route::get('/edit/{product_id}',[ProductController::class, 'edit']);
 Route::PUT('/update',[ProductController::class, 'update']);
 // 登録商品の削除
 Route::get('/delete/{product_id}',[ProductController::class, 'destroy']);
-
