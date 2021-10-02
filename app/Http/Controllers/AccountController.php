@@ -28,7 +28,7 @@ class AccountController extends Controller
         Account::create([
             'account_name'=> $request->account_name,
             'email'=> $request->email,
-            'password'=> $request->password,
+            'password'=> Hash::make($request->password),
         ]);
     }
 
@@ -39,18 +39,18 @@ class AccountController extends Controller
      */
     public function login(Request $request)
     {
-        $account = Account::where('email', $request->email)->get();
-        if (count($account) === 0){
+        $account = Account::where('email', $request->email)->first();
+        if ($account == false){
             return view('login', ['login_error' => '1']);
         }
         
         // 一致
-        if (Hash::check($request->password, $account[0]->password)) {
+        if (Hash::check($request->password, $account->password)) {
             
             
             // セッション
-            session(['name'  => $account[0]->name]);
-            session(['email' => $account[0]->email]);
+            session(['name'  => $account->name]);
+            session(['email' => $account->email]);
             
             // フラッシュ
             session()->flash('flash_flg', 1);
