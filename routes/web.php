@@ -22,10 +22,10 @@ use App\Http\Controllers\ProductController;
 
 Route::post('register',[AccountController::class,'register']);
 Route::post('login',[AccountController::class,'login']);
-Route::get('register',function(){return view('auth.register')});
-Route::get('login', function(){return view('auth.login')});
+Route::get('register',function(){return view('auth.register');});
+Route::get('login', function(){return view('auth.login');});
 
-Route::get('mypage', function(){return view('mypage')});
+Route::get('mypage', function(){return view('mypage');});
 
 // Route::resource('/product',ProductController::class);
 // 商品一覧画面を表示
