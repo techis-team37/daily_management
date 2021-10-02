@@ -57,7 +57,7 @@ class AccountController extends Controller
             session()->flash('flash_flg', 1);
             session()->flash('flash_msg', 'ログインしました。');
 
-            return view('mypage', compact('account', 'account'));
+            return view('mypage');
         }else{
             return view('login', ['login_error' => '2']);
         }
