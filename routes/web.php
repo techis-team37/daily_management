@@ -39,4 +39,3 @@ Route::get('/edit/{product_id}',[ProductController::class, 'edit']);
 Route::PUT('/update',[ProductController::class, 'update']);
 // 登録商品の削除
 Route::get('/delete/{product_id}',[ProductController::class, 'destroy']);
-
