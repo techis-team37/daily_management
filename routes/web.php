@@ -16,6 +16,8 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+Route::get('/',function(){return view('mypage');});
+
 //Route::resource('/account',AccountController::class);
 
 //Route::get('account/view',[AccountController::class,'create']);
