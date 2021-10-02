@@ -44,6 +44,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'product_name' => 'required|max:50',
+            'image' => 'image|max:500',
+            'tag' => 'max:20',
+            'category' => 'required|max:20',
+            'stock' => 'required|max:3',
+            'best_by_date' => 'date',
+            'use_by_date' => 'date',
+            'account_id' => 'required',
+        ]);
+
         $product = new Product;
 
         $product->product_name = $request->product_name;
@@ -101,6 +112,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'product_name' => 'required|max:50',
+            'image' => 'image|max:500',
+            'tag' => 'max:20',
+            'category' => 'required|max:20',
+            'stock' => 'required|max:3',
+            'best_by_date' => 'date',
+            'use_by_date' => 'date',
+        ]);
+
         $savedata = [
             'product_name' => $request->product_name,
             'image' => $request->image,
