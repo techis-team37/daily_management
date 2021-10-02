@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('content')
-<div class="auth-content">
+<div class="login-content">
 
 
 <div class="form-header">
@@ -20,7 +20,7 @@
 </div>
 
 
-<form action="{{'login'}}" method="POST" class="form">
+<form action="{{'/login'}}" method="POST" class="form">
 
     {{csrf_field()}}
 
@@ -37,9 +37,12 @@
     </div>
 
     <div class="btn-list">
-        <a href="" class="btn-area">新規登録</a>
+        <a href="{{ url('register') }}" class="btn-area">
+            新規登録<span class="bg"></span>
+        </a>
         <div class="btn-area">
             <button class="btn" type="submit">ログイン</button>
+            <span class="bg"></span>
         </div>
     </div>
     </form>
