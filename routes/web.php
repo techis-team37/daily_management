@@ -25,7 +25,7 @@ Route::post('login',[AccountController::class,'login']);
 
 // Route::resource('/product',ProductController::class);
 // 商品一覧画面を表示
-Route::get('/product/{account_id}',[ProductController::class, 'index']);
+Route::get('/product/{account_id}',[ProductController::class, 'index'])->middleware('auth');
 // 商品登録画面を表示
 Route::get('/create',[ProductController::class, 'create']);
 // 商品登録の保存
