@@ -47,13 +47,14 @@ class AccountController extends Controller
         }
 
         // 一致
+
         if (Hash::check($request->password, $account->password)) {
             
             
             // セッション
             session(['name'  => $account->name]);
             session(['email' => $account->email]);
-            
+
             // フラッシュ
             session()->flash('flash_flg', 1);
             session()->flash('flash_msg', 'ログインしました。');
