@@ -43,14 +43,14 @@ class AccountController extends Controller
         if (count($account) === 0){
             return view('login', ['login_error' => '1']);
         }
-        
+
         // 一致
         if (Hash::check($request->password, $account[0]->password)) {
-            
+
             // セッション
             session(['name'  => $account[0]->name]);
             session(['email' => $account[0]->email]);
-            
+
             // フラッシュ
             session()->flash('flash_flg', 1);
             session()->flash('flash_msg', 'ログインしました。');
