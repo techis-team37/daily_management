@@ -52,7 +52,7 @@ class AccountController extends Controller
             
             
             // セッション
-            session(['name'  => $account->name]);
+            session(['name'  => $account->account_name]);
             session(['email' => $account->email]);
 
             // フラッシュ
