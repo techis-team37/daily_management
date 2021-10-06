@@ -22,10 +22,10 @@ Route::get('/',function(){return view('mypage');});
 
 //Route::get('account/view',[AccountController::class,'create']);
 
-Route::post('register',[AccountController::class,'register']);
-Route::post('login',[AccountController::class,'login']);
 Route::get('register',function(){return view('auth.register');});
+Route::post('register',[AccountController::class,'register']);
 Route::get('login', function(){return view('auth.login');});
+Route::post('login',[AccountController::class,'login']);
 
 Route::get('mypage', function(){return view('mypage');});
 
