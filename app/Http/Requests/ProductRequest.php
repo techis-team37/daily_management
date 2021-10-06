@@ -13,7 +13,7 @@ class ProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'product_name' => 'required|max:50',
-            'image' => 'image|max:500',
+            'image' => 'max:500',
             'tag' => 'max:20',
             'category' => 'required|max:20',
             'stock' => 'required|max:3',
@@ -50,7 +50,7 @@ class ProductRequest extends FormRequest
             'stock.required' => '残数を入力してください',
             'stock.max' => '残数は999以下で入力して下さい',
             'best_by_date.date' => '日付を入力してください',
-            'use_by_date.date' => '日付を入力してください', 
+            'use_by_date.date' => '日付を入力してください',
         ];
     }
 }

@@ -49,9 +49,10 @@ class AccountController extends Controller
         // 一致
 
         if (Hash::check($request->password, $account->password)) {
-            
-            
+
+
             // セッション
+            session(['id'  => $account->account_id]);
             session(['name'  => $account->account_name]);
             session(['email' => $account->email]);
 

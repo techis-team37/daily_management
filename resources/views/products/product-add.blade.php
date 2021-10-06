@@ -5,8 +5,17 @@
 <section id="product-add">
 
     <h2 class="product-main-title">日用品登録</h2>
+    @if ($errors->any())
+        <div class="alert alert-danger mt-3">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="product-add-form">
-        <form action="" method="POST">
+        <form action="{{url('/store/'.Session::get('id'))}}" method="POST">
         @csrf
 
             <div class="file-area">
@@ -79,8 +88,8 @@
                     <img src="{{ asset('img/triangle.svg') }}" alt="">
                 </div>
                 <div class="input-area">
-                    <label for="tag">カテゴリー</label>
-                    <select name="tag" id="tag" class="tag">
+                    <label for="category">カテゴリー</label>
+                    <select name="category" id="category" class="category">
                         <option value="">選択してください</option>
                         <option value="生活必需品">生活必需品</option>
                         <option value="食料品">食料品</option>

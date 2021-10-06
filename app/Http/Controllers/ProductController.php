@@ -15,10 +15,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         // $id = Auth::id();
-        $id = 1;
+        // $id = 1;
 
         $products = Product::where('account_id', $id)->get();
 
@@ -34,7 +34,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return redirect('/create');
+        return view('products.product-add');
     }
 
     /**
@@ -43,7 +43,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(ProductRequest $request, $id)
     {
         $product = new Product;
 
@@ -54,10 +54,11 @@ class ProductController extends Controller
         $product->stock = $request->stock;
         $product->best_by_date = $request->best_by_date;
         $product->use_by_date = $request->use_by_date;
-        $product->account_id = $request->account_id;
+        $product->account_id = $id;
         $product->save();
 
-        return redirect('/product');
+
+        return redirect('/product/'.$id);
     }
 
     /**

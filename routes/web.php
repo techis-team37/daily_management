@@ -16,7 +16,9 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/',function(){return view('mypage');});
+Route::get('/', function () {
+    return view('auth.login');
+})->name('login');
 
 //Route::resource('/account',AccountController::class);
 
@@ -31,11 +33,11 @@ Route::get('mypage', function(){return view('mypage');});
 
 // Route::resource('/product',ProductController::class);
 // 商品一覧画面を表示
-Route::get('/product/{account_id}',[ProductController::class, 'index'])->middleware('auth');
+Route::get('/product/{id}',[ProductController::class, 'index'])->middleware('auth');
 // 商品登録画面を表示
 Route::get('/create',[ProductController::class, 'create']);
 // 商品登録の保存
-Route::post('/store',[ProductController::class, 'store']);
+Route::post('/store/{id}',[ProductController::class, 'store']);
 // 商品個別ページの表示
 Route::get('/show/{product_id}',[ProductController::class, 'show']);
 // 商品編集画面の表示
