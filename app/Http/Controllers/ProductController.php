@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -42,19 +43,8 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $request->validate([
-            'product_name' => 'required|max:50',
-            'image' => 'image|max:500',
-            'tag' => 'max:20',
-            'category' => 'required|max:20',
-            'stock' => 'required|max:3',
-            'best_by_date' => 'date',
-            'use_by_date' => 'date',
-            'account_id' => 'required',
-        ]);
-
         $product = new Product;
 
         $product->product_name = $request->product_name;
@@ -110,18 +100,8 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-        $request->validate([
-            'product_name' => 'required|max:50',
-            'image' => 'image|max:500',
-            'tag' => 'max:20',
-            'category' => 'required|max:20',
-            'stock' => 'required|max:3',
-            'best_by_date' => 'date',
-            'use_by_date' => 'date',
-        ]);
-
         $savedata = [
             'product_name' => $request->product_name,
             'image' => $request->image,
