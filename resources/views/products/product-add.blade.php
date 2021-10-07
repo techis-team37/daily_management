@@ -15,7 +15,7 @@
         </div>
     @endif
     <div class="product-add-form">
-        <form action="{{url('/store/'.Session::get('id'))}}" method="POST">
+        <form action="{{url('/store/'.Session::get('id'))}}" method="POST" enctype="multipart/form-data">
         @csrf
 
             <div class="file-area">
