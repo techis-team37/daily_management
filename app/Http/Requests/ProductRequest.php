@@ -29,8 +29,8 @@ class ProductRequest extends FormRequest
             'tag' => 'max:20',
             'category' => 'required|max:20',
             'stock' => 'required|max:3',
-            'best_by_date' => 'date',
-            'use_by_date' => 'date',
+            'best_by_date' => 'date|nullable',
+            'use_by_date' => 'date|nullable',
         ];
     }
 
