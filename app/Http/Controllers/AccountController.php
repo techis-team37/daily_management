@@ -60,8 +60,8 @@ class AccountController extends Controller
             session()->flash('flash_flg', 1);
             session()->flash('flash_msg', 'ログインしました。');
         //
-            return redirect('mypage');
-   
+            return redirect('/product/'.$account->account_id);
+
         // 一致しなかった場合
         }else{
             $msg = 'パスワードが一致しません';

@@ -33,7 +33,7 @@ Route::get('mypage', function(){return view('mypage');});
 
 // Route::resource('/product',ProductController::class);
 // 商品一覧画面を表示
-Route::get('/product/{id}',[ProductController::class, 'index'])->middleware('auth');
+Route::get('/product/{id}',[ProductController::class, 'index'])->middleware('login');
 // 商品登録画面を表示
 Route::get('/create',[ProductController::class, 'create']);
 // 商品登録の保存
