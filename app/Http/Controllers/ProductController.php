@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
     /**
-     * 商品一覧画面
+     * マイページ画面
      *
      * @return \Illuminate\Http\Response
      */
@@ -20,9 +20,29 @@ class ProductController extends Controller
         // $id = Auth::id();
         // $id = 1;
 
-        $products = Product::where('account_id', $id)->get();
+        $products = Product::where('account_id', $id)
+                            ->orderBy('created_at', 'desc')
+                            ->limit(4)
+                            ->get();
 
         return view('mypage',[
+            'products' => $products,
+        ]);
+    }
+
+    /**
+     * 商品一覧画面
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_product($id)
+    {
+
+        $products = Product::where('account_id', $id)
+                            ->orderBy('created_at', 'desc')
+                            ->get();
+
+        return view('product',[
             'products' => $products,
         ]);
     }
@@ -70,11 +90,11 @@ class ProductController extends Controller
     public function show($product_id)
     {
         // $id = Auth::id();
-        $product_id = 1;
+        // $product_id = 1;
 
-        $product = Product::findOrFail($product_id);
+        $product = Product::where('product_id', $product_id)->first();
 
-        return view('product_page',[
+        return view('products.product-page',[
             'product' => $product,
         ]);
     }

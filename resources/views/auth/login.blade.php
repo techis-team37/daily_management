@@ -19,6 +19,11 @@
     </div>
 </div>
 
+@if($msg ?? '' !== null)
+    <div class="error-msg">
+        <p class="error-text">{{$msg ?? ''}}</p>
+    </div>
+@endif
 
 <form action="{{'/login'}}" method="POST" class="form">
 
