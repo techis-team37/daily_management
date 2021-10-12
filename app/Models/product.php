@@ -27,4 +27,7 @@ class Product extends Model
         'best_by_date',
         'use_by_date',
     ];
+
+    public $incrementing = false;
+    protected $primaryKey = 'product_id';
 }

@@ -43,8 +43,8 @@
     </div>
 
     <div class="btn-area">
-        <button class="delete-btn"><a href="" class="delete">削除</a></button>
-        <button class="update-btn"><a href="" class="update">編集</a></button>
+        <button class="delete-btn"><a href="{{ url('/delete/'.$product -> product_id) }}" class="delete">削除<span class="bg"></span></a></button>
+        <button class="update-btn"><a href="{{ url('/edit/'.$product -> product_id) }}" class="update">編集<span class="bg"></span></a></button>
     </div>
 </section>
 

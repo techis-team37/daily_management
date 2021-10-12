@@ -6,7 +6,8 @@
 
     <h2 class="product-main-title">日用品編集</h2>
     <div class="product-add-form">
-        <form action="" method="POST">
+        <form action="{{ url('/update/'.$product -> product_id) }}" method="post" enctype="multipart/form-data">
+        @method('PUT')
         @csrf
 
             <div class="file-area">
@@ -72,36 +73,42 @@
                 <div class="input-area">
                     <label for="tag">タグ</label>
                     <select name="tag" id="tag" class="tag">
-                        <option value="">選択してください</option>
+                        <option value="" hidden selected> {{ $product -> tag }}</option>
                         <option value="キッチン">キッチン</option>
                         <option value="リビング">リビング</option>
                     </select>
                     <img src="{{ asset('img/triangle.svg') }}" alt="">
                 </div>
                 <div class="input-area">
-                    <label for="tag">カテゴリー</label>
-                    <select name="tag" id="tag" class="tag">
-                        <option value="">選択してください</option>
+                    <label for="category">カテゴリー</label>
+                    <select name="category" id="category" class="category">
+                        <option value="" hidden selected>{{ $product -> category }}</option>
                         <option value="生活必需品">生活必需品</option>
                         <option value="食料品">食料品</option>
+                        <option value="衛生用品">衛生用品</option>
+                        <option value="洗剤">洗剤</option>
+                        <option value="化学製品">化学製品</option>
+                        <option value="お風呂用品">お風呂用品</option>
+                        <option value="台所用品">台所用品</option>
+                        <option value="その他">その他</option>
                     </select>
                     <img src="{{ asset('img/triangle.svg') }}" alt="">
                 </div>
                 <div class="input-area">
                     <label for="product">商品名</label>
-                    <input type="text" id="product" class="product" name="product_name">
+                    <input type="text" id="product" class="product" name="product_name" value="{{ $product ->  product_name}}">
                 </div>
                 <div class="input-area">
                     <label for="stock">個数</label>
-                    <input type="text" id="stock" class="stock" name="stock">
+                    <input type="number" id="stock" class="stock" name="stock" value="{{ $product ->  stock}}">
                 </div>
                 <div class="input-area">
                     <label for="use_by_date">消費期限</label>
-                    <input type="text" id="use_by_date" class="use_by_date" name="use_by_date">
+                    <input type="date" id="use_by_date" class="use_by_date" name="use_by_date" value="{{ $product ->  best_by_date}}">
                 </div>
                 <div class="input-area input-time">
                     <label for="best_by_date">賞味期限</label>
-                    <input type="text" id="best_by_date" class="best_by_date" name="best_by_date">
+                    <input type="date" id="best_by_date" class="best_by_date" name="best_by_date" value="{{ $product ->  use_by_date}}">
                 </div>
             </div>
 

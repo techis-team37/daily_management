@@ -92,7 +92,7 @@ class ProductController extends Controller
         // $id = Auth::id();
         // $product_id = 1;
 
-        $product = Product::where('product_id', $product_id)->first();
+        $product = Product::where('product_id', $product_id)->firstOrFail();
 
         return view('products.product-page',[
             'product' => $product,
@@ -107,9 +107,9 @@ class ProductController extends Controller
      */
     public function edit($product_id)
     {
-        $product = Product::findOrFail($product_id);
+        $product = Product::where('product_id', $product_id)->firstOrFail();
 
-        return view('edit_page',[
+        return view('products.product-update',[
             'product' => $product,
         ]);
     }
@@ -121,22 +121,28 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, $id)
+    public function update(ProductRequest $request, $product_id)
     {
-        $savedata = [
-            'product_name' => $request->product_name,
-            'image' => $request->image,
-            'tag' => $request->tag,
-            'category' => $request->category,
-            'stock' => $request->stock,
-            'best_by_date' => $request->best_by_date,
-            'use_by_date' => $request->use_by_date,
-        ];
+        // $savedata = [
+        //     'product_name' => $request->product_name,
+        //     'image' => $request->image,
+        //     'tag' => $request->tag,
+        //     'category' => $request->category,
+        //     'stock' => $request->stock,
+        //     'best_by_date' => $request->best_by_date,
+        //     'use_by_date' => $request->use_by_date,
+        // ];
 
-        $product = new Product;
-        $product->fill($savedata)->save();
+        // $product = Product::find($product_id);
+        // $product->fill($request->all())->save();
 
-        return redirect('/product');
+        $product = Product::find($product_id);
+        $product->fill($request->all())->save();
+
+        $account_id = Product::where('product_id', $product_id)
+                            ->get('account_id');
+
+        return redirect('/product/'.$account_id);
     }
 
     /**
