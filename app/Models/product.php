@@ -26,7 +26,18 @@ class Product extends Model
         'stock',
         'best_by_date',
         'use_by_date',
+        'account_id'
     ];
+
+    /**
+     * ネイティブなタイプへキャストする属性
+     *
+     * @var array
+     */
+    protected $casts = [
+        'account_id' => 'string',
+    ];
+
 
     public $incrementing = false;
     protected $primaryKey = 'product_id';

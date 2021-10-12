@@ -169,10 +169,14 @@
 }
 
 #product-page .btn-area .delete-btn a, #product-page .btn-area .update-btn a{
-    transition: all .5s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-#product-page .btn-area .delete-btn a .bg, #product-page .btn-area .update-btn a .bg{
+#product-page .btn-area .delete-btn .bg, #product-page .btn-area .update-btn .bg{
     display: block;
     position: absolute;
     top: 0;
@@ -185,8 +189,12 @@
     transition: all .5s;
 }
 
-#product-page .btn-area .delete-btn a .bg{
+#product-page .btn-area .delete-btn .bg{
     background-color: rgb(179, 72, 53);
+}
+
+#product-page .btn-area .delete-btn:hover, #product-page .btn-area .update-btn:hover{
+    color: #fff;
 }
 
 #product-page .btn-area .delete-btn:hover{
@@ -197,18 +205,10 @@
     border: 1px solid transparent;
 }
 
-#product-page .btn-area .delete-btn:hover > a{
-    color: #fff;
-}
-
-#product-page .btn-area .update-btn:hover > a{
-    color: #fff;
-}
-
-#product-page .btn-area .delete-btn:hover > a .bg{
+#product-page .btn-area .delete-btn:hover > .bg{
     left: 0;
 }
 
-#product-page .btn-area .update-btn:hover > a .bg{
+#product-page .btn-area .update-btn:hover > .bg{
     left: 0;
 }

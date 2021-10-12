@@ -139,10 +139,10 @@ class ProductController extends Controller
         $product = Product::find($product_id);
         $product->fill($request->all())->save();
 
-        $account_id = Product::where('product_id', $product_id)
-                            ->get('account_id');
+        $account = Product::where('product_id', $product_id)
+                            ->firstOrFail();
 
-        return redirect('/product/'.$account_id);
+        return redirect('/product/'.$account->account_id);
     }
 
     /**
@@ -153,10 +153,14 @@ class ProductController extends Controller
      */
     public function destroy($product_id)
     {
+        $account = Product::where('product_id', $product_id)
+                            ->firstOrFail();
+
         $product = Product::findOrFail($product_id);
 
         $product->delete();
 
-        return redirect('/product');
+
+        return redirect('/product/'.$account->account_id);
     }
 }
