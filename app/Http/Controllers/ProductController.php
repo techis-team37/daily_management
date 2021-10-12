@@ -45,10 +45,17 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request, $id)
     {
+        // オリジナルの名前を残す場合
+        $filename = time(). '.' .$request->image->getClientOriginalName(); // 時間を付けて保存
+        $image = $request->image->storeAs('',$filename,'public');
+
         $product = new Product;
 
         $product->product_name = $request->product_name;
-        $product->image = $request->image;
+        $product->image = $image;
+        //オリジナルの名前を保存しない場合
+        // $product->image = time(). '.' .$request->image->store('public'); // strage/app/publicに保存
+        $product->image = $image;
         $product->tag = $request->tag;
         $product->category = $request->category;
         $product->stock = $request->stock;
