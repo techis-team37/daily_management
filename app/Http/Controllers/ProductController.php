@@ -155,7 +155,6 @@ class ProductController extends Controller
                             ->firstOrFail();
 
         return redirect('/product/'.$account->account_id);
-
     }
 
     /**
