@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -130,18 +131,22 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, $product_id)
     {
+        // 変更があったときのみ
+        if($request->image){
+            Storage::disk('public')->delete('image');
+            $filename = time(). '.' .$request->image->getClientOriginalName(); // 時間を付けて保存
+            $image = $request->image->storeAs('',$filename,'public');
+        }
+
         // $savedata = [
         //     'product_name' => $request->product_name,
-        //     'image' => $request->image,
+        //     'image' => $image,
         //     'tag' => $request->tag,
         //     'category' => $request->category,
         //     'stock' => $request->stock,
         //     'best_by_date' => $request->best_by_date,
         //     'use_by_date' => $request->use_by_date,
         // ];
-
-        // $product = Product::find($product_id);
-        // $product->fill($request->all())->save();
 
         $product = Product::find($product_id);
         $product->fill($request->all())->save();
@@ -150,6 +155,7 @@ class ProductController extends Controller
                             ->firstOrFail();
 
         return redirect('/product/'.$account->account_id);
+
     }
 
     /**
