@@ -77,11 +77,12 @@
                 <div class="input-area">
                     <label for="stock">個数</label><span class="alart-tag">必須</span>
                     <input type="number" id="stock" class="stock" name="stock" value="{{ $product ->  stock}}">
+
                 </div>
                 <div class="input-area">
                     <label for="category">カテゴリー</label><span class="alart-tag">必須</span>
                     <select name="category" id="category" class="category">
-                        <option value="" hidden selected>{{ $product -> category }}</option>
+                        <option value="{{ $product -> category }}" hidden selected>{{ $product -> category }}</option>
                         <option value="生活必需品">生活必需品</option>
                         <option value="食料品">食料品</option>
                         <option value="衛生用品">衛生用品</option>

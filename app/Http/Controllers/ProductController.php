@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -65,10 +66,17 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request, $id)
     {
+        // オリジナルの名前を残す場合
+        $filename = time(). '.' .$request->image->getClientOriginalName(); // 時間を付けて保存
+        $image = $request->image->storeAs('',$filename,'public');
+
         $product = new Product;
 
         $product->product_name = $request->product_name;
-        $product->image = $request->image;
+        $product->image = $image;
+        //オリジナルの名前を保存しない場合
+        // $product->image = time(). '.' .$request->image->store('public'); // strage/app/publicに保存
+        $product->image = $image;
         $product->tag = $request->tag;
         $product->category = $request->category;
         $product->stock = $request->stock;
@@ -76,7 +84,6 @@ class ProductController extends Controller
         $product->use_by_date = $request->use_by_date;
         $product->account_id = $id;
         $product->save();
-
 
         return redirect('/product/'.$id);
     }
@@ -123,21 +130,26 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, $product_id)
     {
-        // $savedata = [
-        //     'product_name' => $request->product_name,
-        //     'image' => $request->image,
-        //     'tag' => $request->tag,
-        //     'category' => $request->category,
-        //     'stock' => $request->stock,
-        //     'best_by_date' => $request->best_by_date,
-        //     'use_by_date' => $request->use_by_date,
-        // ];
+        // 変更があったときのみ
+        if($request->image){
+            $delete_image = Product::select('image')->find($product_id);
+            Storage::disk('public')->delete($delete_image);
+            $filename = time(). '.' .$request->image->getClientOriginalName(); // 時間を付けて保存
+            $image = $request->image->storeAs('',$filename,'public');
+        }
 
-        // $product = Product::find($product_id);
-        // $product->fill($request->all())->save();
+        $savedata = [
+            'product_name' => $request->product_name,
+            'image' => $image,
+            'tag' => $request->tag,
+            'category' => $request->category,
+            'stock' => $request->stock,
+            'best_by_date' => $request->best_by_date,
+            'use_by_date' => $request->use_by_date,
+        ];
 
         $product = Product::find($product_id);
-        $product->fill($request->all())->save();
+        $product->fill($savedata)->update();
 
         $account = Product::where('product_id', $product_id)
                             ->firstOrFail();
