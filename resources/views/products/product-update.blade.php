@@ -11,10 +11,15 @@
         @csrf
 
             <div class="file-area">
+            @if($product -> image !== null)
+                <img src="{{ asset('/storage/'.$product -> image) }}" alt="画像が見つかりません" class="null-not-image change-image">
+            @else
+                <img src="{{ asset('/img/no_image.png') }}" alt="画像が見つかりません" class="change-image">
+            @endif
                 <h2 class="file-title">画像</h2>
                 <label for="file">
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	                viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+	                viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" fill="#000">
                         <g>
                             <g>
                                 <path d="M256,0C114.84,0,0,114.84,0,256s114.84,256,256,256s256-114.84,256-256S397.16,0,256,0z M256,475.429
@@ -81,8 +86,8 @@
                 </div>
                 <div class="input-area">
                     <label for="category">カテゴリー</label><span class="alart-tag">必須</span>
-                    <select name="category" id="category" class="category">
-                        <option value="{{ $product -> category }}" hidden selected>{{ $product -> category }}</option>
+                    <select name="category" id="category" class="category" value="{{ $product -> category }}">
+                        <option value="{{ $product -> category }}">{{ $product -> category }}</option>
                         <option value="生活必需品">生活必需品</option>
                         <option value="食料品">食料品</option>
                         <option value="衛生用品">衛生用品</option>

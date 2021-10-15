@@ -11,13 +11,19 @@
     <link rel="icon" href="{{ asset('img/logo.png') }}">
     <!-- リセットCSSの読み込み -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+
+    <!-- jQueryの読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="{{asset('js/products.js')}}"></script>
+
 </head>
 <body>
 
     <header id="main-header">
         <div class="header-content">
             <div class="project-title-area">
-                <a href="">
+                <a href="{{ url('/product/'.Session::get('id')) }}">
                 <img src="{{ asset('/img/logo.png') }}" alt="">
                 </a>
                 <div class="title-area">

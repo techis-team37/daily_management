@@ -72,7 +72,11 @@
                     @foreach($products as $product)
                         <a href="{{ url('/show/'.$product->product_id) }}">
                             <li class="products-content products-content-1">
-                                <img src="{{ asset('img/product-1.png') }}" alt="">
+                            @if($product -> image !== null)
+                                <img src="{{ asset('/storage/'.$product -> image) }}" alt="画像が見つかりません">
+                            @else
+                                <img src="{{ asset('/img/no_image.png') }}" alt="画像が見つかりません">
+                            @endif
                                 <div class="product-text-item">
                                     <h4 class="category">{{$product -> category}}</h4>
                                     <h2 class="product-title">{{$product -> product_name}}</h2>
@@ -94,6 +98,10 @@
                     @endforeach
                 </ul>
             </div>
+        @else
+        <div class="no-product">
+            <p class="no-text">現在登録されている日用品はありません。</p>
+        </div>
         @endif
     </div>
 

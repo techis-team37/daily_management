@@ -59,14 +59,25 @@
     display: flex;
     justify-content: space-evenly;
     align-items: flex-end;
+    max-width: 750px;
+    max-height: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#graph .graph-area .graph-container .graph-content{
+    text-align: center;
 }
 
 #graph .graph-area .graph-container .graph-content .graph-title{
-    font-size: 2rem;
+    display: block;
+    font-size: 1.5rem;
     writing-mode: vertical-rl;
+    height: 150px;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
+    text-align: left;
 }
 
 #graph .graph-area .graph-container .graph-content .graph-item{
@@ -75,6 +86,7 @@
     width: 50px;
     border: 1px solid #000;
     margin: 0 5px;
+    transition: all 1s;
 }
 
 #graph .graph-area .graph-container .graph-content .graph-item::after{
@@ -88,82 +100,15 @@
     background: #000;
 }
 
-#graph .graph-area .graph-container .graph-1 .graph-item{
-    height: 267px;
-    background: #F8FFA8;
-}
-#graph .graph-area .graph-container .graph-2 .graph-item{
-    height: 178px;
-    background: #F8FFA8;
-}
-#graph .graph-area .graph-container .graph-3 .graph-item{
-    height: 342px;
-    background: #AFFFAF;
-}
-#graph .graph-area .graph-container .graph-4 .graph-item{
-    height: 243px;
-    background: #F8FFA8;
-}
-#graph .graph-area .graph-container .graph-5 .graph-item{
-    height: 317px;
-    background: #AFFFAF;
-}
-#graph .graph-area .graph-container .graph-6 .graph-item{
-    height: 53px;
-    background: #FFA2A2;
-}
-#graph .graph-area .graph-container .graph-7 .graph-item{
-    height: 89px;
-    background: #FFA2A2;
-}
-#graph .graph-area .graph-container .graph-8 .graph-item{
-    height: 366px;
-    background: #AFFFAF;
-}
-#graph .graph-area .graph-container .graph-9 .graph-item{
-    height: 229px;
-    background: #F8FFA8;
-}
-#graph .graph-area .graph-container .graph-10 .graph-item{
-    height: 229px;
-    background: #F8FFA8;
+#graph .graph-area .graph-container .graph-content .stock{
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 1.5rem;
 }
 
-#message .message-main-area{
+.no-product{
     text-align: center;
-}
-
-#message .message-main-area .message-container{
-    width: 70%;
-    height: 100%;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#message .message-main-area .message-container .message-item{
-    font-size: 2rem;
-    position: relative;
-    background: #fff;
-    margin-bottom: 30px;
-    height: 160px;
-}
-
-#message .message-main-area .message-container .message-item .message-content{
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding-top: 10px;
-    padding-left: 30px;
-}
-
-#message .message-main-area .message-container .message-item .message-content .name{
-    border-bottom: 1px solid #000;
-    margin-right: 30px;
-}
-
-#message .message-main-area .message-container .message-item .body{
-    margin-top: 30px;
+    font-size: 3rem;
 }
 
 .more-btn{
@@ -202,6 +147,7 @@
 
 #products{
     width: 100%;
+    margin-bottom: 50px;
 }
 
 #products .products-area{
@@ -223,6 +169,7 @@
 #products .products-area .products-container .products-content img{
     width: 200px;
     height: 200px;
+    object-fit: cover;
 }
 
 #products .products-area .products-container .products-content .product-text-item{

@@ -6,7 +6,11 @@
     <h2 class="product-main-title">日用品詳細</h2>
     <div class="product_show">
         <div class="img-area">
-            <img src="{{ asset('img/product-1.png') }}" alt="">
+        @if($product -> image !== null)
+            <img src="{{ asset('/storage/'.$product -> image) }}" alt="画像が見つかりません">
+        @else
+            <img src="{{ asset('/img/no_image.png') }}" alt="画像が見つかりません">
+        @endif
         </div>
         @if($product !== null)
         <div class="product-text">

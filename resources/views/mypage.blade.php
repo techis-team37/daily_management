@@ -67,50 +67,23 @@
     <div id="graph">
         <h3 class="content-title">無くなりそうな日用品の在庫</h3>
 
-        <div class="graph-area">
-            <ul class="graph-container">
-                <li class="graph-content graph-1">
-                    <span class="graph-item"></span>
-                    <p class="graph-title">〇〇</p>
-                </li>
-                <li class="graph-content graph-2">
-                    <span class="graph-item"></span>
-                    <p class="graph-title">〇〇</p>
-                </li>
-                <li class="graph-content graph-3">
-                    <span class="graph-item"></span>
-                    <p class="graph-title">〇〇</p>
-                </li>
-                <li class="graph-content graph-4">
-                    <span class="graph-item"></span>
-                    <p class="graph-title">〇〇</p>
-                </li>
-                <li class="graph-content graph-5">
-                    <span class="graph-item"></span>
-                    <p class="graph-title">〇〇</p>
-                </li>
-                <li class="graph-content graph-6">
-                    <span class="graph-item"></span>
-                    <p class="graph-title">〇〇</p>
-                </li>
-                <li class="graph-content graph-7">
-                    <span class="graph-item"></span>
-                    <p class="graph-title">〇〇</p>
-                </li>
-                <li class="graph-content graph-8">
-                    <span class="graph-item"></span>
-                    <p class="graph-title">〇〇</p>
-                </li>
-                <li class="graph-content graph-9">
-                    <span class="graph-item"></span>
-                    <p class="graph-title">〇〇</p>
-                </li>
-                <li class="graph-content graph-10">
-                    <span class="graph-item"></span>
-                    <p class="graph-title">〇〇</p>
-                </li>
-            </ul>
-        </div>
+        @if(count($stocks) >= 5)
+            <div class="graph-area">
+                <ul class="graph-container">
+                    @foreach($stocks as $name => $stock)
+                    <li class="graph-content">
+                        <span class="graph-item" style="height:{{$stock * 30}}px;"></span>
+                        <span class="stock">{{$stock}}</span>
+                        <p class="graph-title">{{$name}}</p>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+        @else
+            <div class="no-product">
+                <p class="no-text">日用品登録数5以上でグラフを表示できます。</p>
+            </div>
+        @endif
     </div>
 
     <div id="products">
@@ -123,7 +96,11 @@
                     @foreach($products as $product)
                         <a href="{{ url('/show/'.$product->product_id) }}">
                             <li class="products-content products-content-1">
-                                <img src="{{ asset('img/product-1.png') }}" alt="">
+                            @if($product -> image !== null)
+                                <img src="{{ asset('/storage/'.$product -> image) }}" alt="画像が見つかりません">
+                            @else
+                                <img src="{{ asset('/img/no_image.png') }}" alt="画像が見つかりません">
+                            @endif
                                 <div class="product-text-item">
                                     <h4 class="category">{{$product -> category}}</h4>
                                     <h2 class="product-title">{{$product -> product_name}}</h2>
@@ -145,6 +122,10 @@
                     @endforeach
                 </ul>
                 <a href="{{ url('/products/'.Session::get('id')) }}" class="more-btn">もっと見る<span class="bg"></span></a>
+            </div>
+        @else
+            <div class="no-product">
+                <p class="no-text">現在登録されている日用品はありません。</p>
             </div>
         @endif
     </div>
