@@ -85,7 +85,6 @@ class ProductController extends Controller
         $product->account_id = $id;
         $product->save();
 
-
         return redirect('/product/'.$id);
     }
 
@@ -133,23 +132,24 @@ class ProductController extends Controller
     {
         // 変更があったときのみ
         if($request->image){
-            Storage::disk('public')->delete('image');
+            $delete_image = Product::select('image')->find($product_id);
+            Storage::disk('public')->delete($delete_image);
             $filename = time(). '.' .$request->image->getClientOriginalName(); // 時間を付けて保存
             $image = $request->image->storeAs('',$filename,'public');
         }
 
-        // $savedata = [
-        //     'product_name' => $request->product_name,
-        //     'image' => $image,
-        //     'tag' => $request->tag,
-        //     'category' => $request->category,
-        //     'stock' => $request->stock,
-        //     'best_by_date' => $request->best_by_date,
-        //     'use_by_date' => $request->use_by_date,
-        // ];
+        $savedata = [
+            'product_name' => $request->product_name,
+            'image' => $image,
+            'tag' => $request->tag,
+            'category' => $request->category,
+            'stock' => $request->stock,
+            'best_by_date' => $request->best_by_date,
+            'use_by_date' => $request->use_by_date,
+        ];
 
         $product = Product::find($product_id);
-        $product->fill($request->all())->save();
+        $product->fill($savedata)->update();
 
         $account = Product::where('product_id', $product_id)
                             ->firstOrFail();
