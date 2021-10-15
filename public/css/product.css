@@ -212,3 +212,29 @@
 #product-page .btn-area .update-btn:hover > .bg{
     left: 0;
 }
+
+.error {
+    text-align: center;
+}
+
+.error ul{
+    display: inline-block;
+    width: 60%;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 30px;
+    color: red;
+    border: 1px solid red;
+    font-size: 20px;
+}
+
+.alart-tag{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    font-size: 15px;
+    background-color: red;
+    color: #fff;
+    padding: 0 5px;
+}

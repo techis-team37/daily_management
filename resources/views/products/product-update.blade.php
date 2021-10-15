@@ -71,16 +71,15 @@
 
             <div class="input-text">
                 <div class="input-area">
-                    <label for="tag">タグ</label>
-                    <select name="tag" id="tag" class="tag">
-                        <option value="" hidden selected> {{ $product -> tag }}</option>
-                        <option value="キッチン">キッチン</option>
-                        <option value="リビング">リビング</option>
-                    </select>
-                    <img src="{{ asset('img/triangle.svg') }}" alt="">
+                    <label for="product">商品名</label><span class="alart-tag">必須</span>
+                    <input type="text" id="product" class="product" name="product_name" value="{{ $product ->  product_name}}">
                 </div>
                 <div class="input-area">
-                    <label for="category">カテゴリー</label>
+                    <label for="stock">個数</label><span class="alart-tag">必須</span>
+                    <input type="number" id="stock" class="stock" name="stock" value="{{ $product ->  stock}}">
+                </div>
+                <div class="input-area">
+                    <label for="category">カテゴリー</label><span class="alart-tag">必須</span>
                     <select name="category" id="category" class="category">
                         <option value="" hidden selected>{{ $product -> category }}</option>
                         <option value="生活必需品">生活必需品</option>
@@ -95,12 +94,13 @@
                     <img src="{{ asset('img/triangle.svg') }}" alt="">
                 </div>
                 <div class="input-area">
-                    <label for="product">商品名</label>
-                    <input type="text" id="product" class="product" name="product_name" value="{{ $product ->  product_name}}">
-                </div>
-                <div class="input-area">
-                    <label for="stock">個数</label>
-                    <input type="number" id="stock" class="stock" name="stock" value="{{ $product ->  stock}}">
+                    <label for="tag">タグ</label>
+                    <select name="tag" id="tag" class="tag">
+                        <option value="" hidden selected> {{ $product -> tag }}</option>
+                        <option value="キッチン">キッチン</option>
+                        <option value="リビング">リビング</option>
+                    </select>
+                    <img src="{{ asset('img/triangle.svg') }}" alt="">
                 </div>
                 <div class="input-area">
                     <label for="use_by_date">消費期限</label>

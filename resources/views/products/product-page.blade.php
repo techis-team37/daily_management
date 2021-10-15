@@ -11,20 +11,20 @@
         @if($product !== null)
         <div class="product-text">
             <dl>
-                <dt>タグ</dt>
-                <dd>{{$product -> tag}}</dd>
-            </dl>
-            <dl>
-                <dt>カテゴリー</dt>
-                <dd>{{$product -> category}}</dd>
-            </dl>
-            <dl>
                 <dt>商品名</dt>
                 <dd>{{$product -> product_name}}</dd>
             </dl>
             <dl>
                 <dt>個数</dt>
                 <dd>{{$product -> stock}}</dd>
+            </dl>
+            <dl>
+                <dt>カテゴリー</dt>
+                <dd>{{$product -> category}}</dd>
+            </dl>
+            <dl>
+                <dt>タグ</dt>
+                <dd>{{$product -> tag}}</dd>
             </dl>
             <dl>
                 <dt>消費期限</dt>
