@@ -73,7 +73,7 @@
                 <div class="input-area">
                     <label for="tag">タグ</label>
                     <select name="tag" id="tag" class="tag">
-                        <option value="" hidden selected> {{ $product -> tag }}</option>
+                        <option value="{{ $product -> tag }}" hidden selected>{{ $product -> tag }}</option>
                         <option value="キッチン">キッチン</option>
                         <option value="リビング">リビング</option>
                     </select>
@@ -82,7 +82,7 @@
                 <div class="input-area">
                     <label for="category">カテゴリー</label>
                     <select name="category" id="category" class="category">
-                        <option value="" hidden selected>{{ $product -> category }}</option>
+                        <option value="{{ $product -> category }}" hidden selected>{{ $product -> category }}</option>
                         <option value="生活必需品">生活必需品</option>
                         <option value="食料品">食料品</option>
                         <option value="衛生用品">衛生用品</option>
