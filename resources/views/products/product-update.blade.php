@@ -96,7 +96,7 @@
                 </div>
                 <div class="input-area">
                     <label for="tag">タグ</label>
-                    <select name="tag" id="tag" class="tag">
+                    <select value="{{ $product -> tag }}" name="tag" id="tag" class="tag">
                         <option value="" hidden selected> {{ $product -> tag }}</option>
                         <option value="キッチン">キッチン</option>
                         <option value="リビング">リビング</option>
