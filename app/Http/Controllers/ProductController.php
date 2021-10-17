@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
     /**
-     * 商品一覧画面
+     * マイページ画面
      *
      * @return \Illuminate\Http\Response
      */
@@ -20,9 +21,29 @@ class ProductController extends Controller
         // $id = Auth::id();
         // $id = 1;
 
-        $products = Product::where('account_id', $id)->get();
+        $products = Product::where('account_id', $id)
+                            ->orderBy('created_at', 'desc')
+                            ->limit(4)
+                            ->get();
 
         return view('mypage',[
+            'products' => $products,
+        ]);
+    }
+
+    /**
+     * 商品一覧画面
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_product($id)
+    {
+
+        $products = Product::where('account_id', $id)
+                            ->orderBy('created_at', 'desc')
+                            ->get();
+
+        return view('product',[
             'products' => $products,
         ]);
     }
@@ -45,10 +66,17 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request, $id)
     {
+        // オリジナルの名前を残す場合
+        $filename = time(). '.' .$request->image->getClientOriginalName(); // 時間を付けて保存
+        $image = $request->image->storeAs('',$filename,'public');
+
         $product = new Product;
 
         $product->product_name = $request->product_name;
-        $product->image = $request->image;
+        $product->image = $image;
+        //オリジナルの名前を保存しない場合
+        // $product->image = time(). '.' .$request->image->store('public'); // strage/app/publicに保存
+        $product->image = $image;
         $product->tag = $request->tag;
         $product->category = $request->category;
         $product->stock = $request->stock;
@@ -56,7 +84,6 @@ class ProductController extends Controller
         $product->use_by_date = $request->use_by_date;
         $product->account_id = $id;
         $product->save();
-
 
         return redirect('/product/'.$id);
     }
@@ -70,11 +97,11 @@ class ProductController extends Controller
     public function show($product_id)
     {
         // $id = Auth::id();
-        $product_id = 1;
+        // $product_id = 1;
 
-        $product = Product::findOrFail($product_id);
+        $product = Product::where('product_id', $product_id)->firstOrFail();
 
-        return view('product_page',[
+        return view('products.product-page',[
             'product' => $product,
         ]);
     }
@@ -87,9 +114,9 @@ class ProductController extends Controller
      */
     public function edit($product_id)
     {
-        $product = Product::findOrFail($product_id);
+        $product = Product::where('product_id', $product_id)->firstOrFail();
 
-        return view('edit_page',[
+        return view('products.product-update',[
             'product' => $product,
         ]);
     }
@@ -101,11 +128,19 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, $id)
+    public function update(ProductRequest $request, $product_id)
     {
+        // 変更があったときのみ
+        if($request->image){
+            $delete_image = Product::select('image')->find($product_id);
+            Storage::disk('public')->delete($delete_image);
+            $filename = time(). '.' .$request->image->getClientOriginalName(); // 時間を付けて保存
+            $image = $request->image->storeAs('',$filename,'public');
+        }
+
         $savedata = [
             'product_name' => $request->product_name,
-            'image' => $request->image,
+            'image' => $image,
             'tag' => $request->tag,
             'category' => $request->category,
             'stock' => $request->stock,
@@ -113,10 +148,13 @@ class ProductController extends Controller
             'use_by_date' => $request->use_by_date,
         ];
 
-        $product = new Product;
-        $product->fill($savedata)->save();
+        $product = Product::find($product_id);
+        $product->fill($savedata)->update();
 
-        return redirect('/product');
+        $account = Product::where('product_id', $product_id)
+                            ->firstOrFail();
+
+        return redirect('/product/'.$account->account_id);
     }
 
     /**
@@ -127,10 +165,14 @@ class ProductController extends Controller
      */
     public function destroy($product_id)
     {
+        $account = Product::where('product_id', $product_id)
+                            ->firstOrFail();
+
         $product = Product::findOrFail($product_id);
 
         $product->delete();
 
-        return redirect('/product');
+
+        return redirect('/product/'.$account->account_id);
     }
 }

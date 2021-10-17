@@ -6,7 +6,7 @@
 
     <div id="add-products-container">
         <div class="add-products-content">
-            <a href="{{ url('/product-add') }}"></a>
+            <a href="{{ url('/create') }}"></a>
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                 <g>
@@ -65,78 +65,38 @@
     </div>
 
     <div id="products">
-        <div class="products-area">
-            <ul class="products-container">
-                <li class="products-content products-content-1">
-                    <img src="{{ asset('img/product-1.png') }}" alt="">
-                    <div class="product-text-item">
-                        <h4 class="category">生活必需品</h4>
-                        <h2 class="product-title">トイレットペーパー</h2>
-                        <div class="quantity">
-                            <p class="quantity-title">残り：</p>
-                            <span class="quantity-number">○</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="products-content products-content-2">
-                <img src="{{ asset('img/product-2.png') }}" alt="">
-                    <div class="product-text-item">
-                        <h4 class="category">食料品</h4>
-                        <h2 class="product-title">人参</h2>
-                        <div class="product-time">
-                            <p class="product-time-title">賞味期限</p>
-                            <span class="product-time-date">○年○月○日○時○分</span>
-                        </div>
-                        <div class="quantity">
-                            <p class="quantity-title">残り：</p>
-                            <span class="quantity-number">○</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="products-content products-content-3">
-                <img src="{{ asset('img/product-1.png') }}" alt="">
-                    <div class="product-text-item">
-                        <h4 class="category">生活必需品</h4>
-                        <h2 class="product-title">トイレットペーパー</h2>
-                        <div class="quantity">
-                            <p class="quantity-title">残り：</p>
-                            <span class="quantity-number">○</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="products-content products-content-4">
-                <img src="{{ asset('img/product-2.png') }}" alt="">
-                    <div class="product-text-item">
-                        <h4 class="category">食料品</h4>
-                        <h2 class="product-title">人参</h2>
-                        <div class="product-time">
-                            <p class="product-time-title">賞味期限</p>
-                            <span class="product-time-date">○年○月○日○時○分</span>
-                        </div>
-                        <div class="quantity">
-                            <p class="quantity-title">残り：</p>
-                            <span class="quantity-number">○</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="products-content products-content-4">
-                <img src="{{ asset('img/product-2.png') }}" alt="">
-                    <div class="product-text-item">
-                        <h4 class="category">食料品</h4>
-                        <h2 class="product-title">人参</h2>
-                        <div class="product-time">
-                            <p class="product-time-title">賞味期限</p>
-                            <span class="product-time-date">○年○月○日○時○分</span>
-                        </div>
-                        <div class="quantity">
-                            <p class="quantity-title">残り：</p>
-                            <span class="quantity-number">○</span>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+
+        @if(count($products) > 0)
+            <div class="products-area">
+                <ul class="products-container">
+                    @foreach($products as $product)
+                        <a href="{{ url('/show/'.$product->product_id) }}">
+                            <li class="products-content products-content-1">
+                                <img src="{{ asset('img/product-1.png') }}" alt="">
+                                <div class="product-text-item">
+                                    <h4 class="category">{{$product -> category}}</h4>
+                                    <h2 class="product-title">{{$product -> product_name}}</h2>
+                                    @if($product -> use_by_date !== null)
+                                        <div class="product-time">
+                                            <p class="product-time-title">賞味期限</p>
+                                            <span class="product-time-date">{{$product -> use_by_date}}</span>
+                                        </div>
+                                    @endif
+                                    <div class="quantity">
+                                        <p class="quantity-title">残り：{{$product -> stock}}</p>
+                                        @if($product -> best_by_date !== null)
+                                            <p class="quantity-number">{{$product -> best_by_date}}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </li>
+                        </a>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
+
 
 
 </section>

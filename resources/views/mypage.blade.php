@@ -113,109 +113,40 @@
         </div>
     </div>
 
-    <div id="message">
-        <h3 class="content-title">みんなの掲示板</h3>
-    <div class="message-main-area">
-
-        <ul class="message-container">
-            <li class="message-item message-item-1">
-                <div class="message-content">
-                    <p class="name">母さん</p>
-                    <span class="time">何分前</span>
-                </div>
-                    <p class="body">〇〇と〇〇と〇〇を学校の帰りに買っておいてください。</p>
-            </li>
-            <li class="message-item message-item-2">
-                <div class="message-content">
-                    <p class="name">父さん</p>
-                    <span class="time">何十分前</span>
-                </div>
-                    <p class="body">〇〇と〇〇との在庫が切れそうだよ！！</p>
-            </li>
-            <li class="message-item message-item-3">
-                <div class="message-content">
-                    <p class="name">母さん</p>
-                    <span class="time">何時間前</span>
-                </div>
-                    <p class="body">〇〇と〇〇を登録しておいたからみんな頼むよ〜！</p>
-            </li>
-            <li class="message-item message-item-4">
-                <div class="message-content">
-                    <p class="name">兄さん</p>
-                    <span class="time">何日前</span>
-                </div>
-                    <p class="body">今日〇〇が安かったから追加で入れておくよ〜。</p>
-            </li>
-        </ul>
-
-        <a href="" class="more-btn">もっと見る<span class="bg"></span></a>
-    </div>
-
-    </div>
-
     <div id="products">
         <h3 class="content-title">日用品一覧</h3>
 
-        <div class="products-area">
-            <ul class="products-container">
-                <li class="products-content products-content-1">
-                    <img src="{{ asset('img/product-1.png') }}" alt="">
-                    <div class="product-text-item">
-                        <h4 class="category">生活必需品</h4>
-                        <h2 class="product-title">トイレットペーパー</h2>
-                        <div class="quantity">
-                            <p class="quantity-title">残り：</p>
-                            <span class="quantity-number">○</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="products-content products-content-2">
-                <img src="{{ asset('img/product-2.png') }}" alt="">
-                    <div class="product-text-item">
-                        <h4 class="category">食料品</h4>
-                        <h2 class="product-title">人参</h2>
-                        <div class="product-time">
-                            <p class="product-time-title">賞味期限</p>
-                            <span class="product-time-date">○年○月○日○時○分</span>
-                        </div>
-                        <div class="quantity">
-                            <p class="quantity-title">残り：</p>
-                            <span class="quantity-number">○</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="products-content products-content-3">
-                <img src="{{ asset('img/product-1.png') }}" alt="">
-                    <div class="product-text-item">
-                        <h4 class="category">生活必需品</h4>
-                        <h2 class="product-title">トイレットペーパー</h2>
-                        <div class="quantity">
-                            <p class="quantity-title">残り：</p>
-                            <span class="quantity-number">○</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="products-content products-content-4">
-                <img src="{{ asset('img/product-2.png') }}" alt="">
-                    <div class="product-text-item">
-                        <h4 class="category">食料品</h4>
-                        <h2 class="product-title">人参</h2>
-                        <div class="product-time">
-                            <p class="product-time-title">賞味期限</p>
-                            <span class="product-time-date">○年○月○日○時○分</span>
-                        </div>
-                        <div class="quantity">
-                            <p class="quantity-title">残り：</p>
-                            <span class="quantity-number">○</span>
-                        </div>
-                    </div>
-                </li>
-            </ul>
 
-            <a href="{{ url('/product/' . Session::get('id')) }}" class="more-btn">もっと見る<span class="bg"></span></a>
-        </div>
-    </div>
-
+        @if(count($products) > 0)
+            <div class="products-area">
+                <ul class="products-container">
+                    @foreach($products as $product)
+                        <a href="{{ url('/show/'.$product->product_id) }}">
+                            <li class="products-content products-content-1">
+                                <img src="{{ asset('img/product-1.png') }}" alt="">
+                                <div class="product-text-item">
+                                    <h4 class="category">{{$product -> category}}</h4>
+                                    <h2 class="product-title">{{$product -> product_name}}</h2>
+                                    @if($product -> use_by_date !== null)
+                                        <div class="product-time">
+                                            <p class="product-time-title">賞味期限</p>
+                                            <span class="product-time-date">{{$product -> use_by_date}}</span>
+                                        </div>
+                                    @endif
+                                    <div class="quantity">
+                                        <p class="quantity-title">残り：{{$product -> stock}}</p>
+                                        @if($product -> best_by_date !== null)
+                                            <p class="quantity-number">{{$product -> best_by_date}}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </li>
+                        </a>
+                    @endforeach
+                </ul>
+                <a href="{{ url('/products/'.Session::get('id')) }}" class="more-btn">もっと見る<span class="bg"></span></a>
+            </div>
+        @endif
     </div>
 
 </section>

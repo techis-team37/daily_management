@@ -67,8 +67,8 @@ class AccountController extends Controller
         // 一致しなかった場合
         }else{
             $msg = 'パスワードが一致しません';
-            return view('login',['msg' => $msg]);
+            return view('auth.login',['msg' => $msg]);
         }
-        
+
     }
 }

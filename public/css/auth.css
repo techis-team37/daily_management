@@ -139,3 +139,13 @@ a{
 .btn-area:hover{
     color: #fff;
 }
+
+.error-msg{
+    text-align: center;
+    font-size: 2rem;
+    color: rgb(172, 12, 12);
+}
+
+.error-msg .error-text{
+    margin-bottom: 20px;
+}
