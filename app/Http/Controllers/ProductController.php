@@ -191,6 +191,9 @@ class ProductController extends Controller
      */
     public function destroy($product_id)
     {
+        $delete_image = Product::where('product_id', $product_id)->value('image');
+        Storage::delete('public/'.$delete_image);
+        
         $account = Product::where('product_id', $product_id)
                             ->firstOrFail();
 
