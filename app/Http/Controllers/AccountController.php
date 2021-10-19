@@ -9,7 +9,7 @@ use App\Models\Account;
 
 class AccountController extends Controller
 {
-   
+
 
     /**
      * 会員登録をする処理
