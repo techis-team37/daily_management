@@ -71,7 +71,8 @@
         @csrf
             <label for="category">カテゴリー</label>
             <div>
-                <select name="category" id="category" value="{{ $category ?? '' }}">
+                <select type="hidden" name="category" id="category" value="{{ $category ?? '' }}">
+                    <option value="{{ $category ?? '' }}" style="display: none;">{{ $category ?? '' }}</option>
                     <option value="">未選択</option>
                     <option value="生活必需品">生活必需品</option>
                     <option value="食料品">食料品</option>

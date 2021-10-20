@@ -19,6 +19,10 @@ class ProductController extends Controller
     public function index(Request $request ,$id)
     {
         $category = $request->category;
+        if($category == "null"){
+            $category = null;
+        }
+        session(['category'  => $request->category]);
         $stocks = array();
 
         if (isset($category)) {
@@ -47,9 +51,14 @@ class ProductController extends Controller
             $stocks[$product_graph -> product_name] = $product_graph -> stock;
         }
 
+        if($category == null){
+            $category = "未選択";
+        }
+
         return view('mypage',[
             'products' => $products,
             'stocks' => $stocks,
+            'category' => $category,
         ]);
     }
 
@@ -58,16 +67,42 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index_product($id)
+    public function index_product(Request $request ,$id)
     {
+        $category = $request->category;
 
-        $products = Product::where('account_id', $id)
-                            ->orderBy('created_at', 'desc')
-                            ->get();
+        if(isset($category)){
+            $category = $request->category;
+            if($category == "null"){
+                $category = null;
+            }
+        }else {
+            $category = session('category');
+        }
 
-        return redirect('product',[
+        // dd($category);
+
+        if (isset($category)) {
+            $products = Product::where('category', $category)
+                                ->orderBy('created_at', 'desc')
+                                ->get();
+        } else {
+            $products = Product::where('account_id', $id)
+                                ->orderBy('created_at', 'desc')
+                                ->get();
+        }
+
+        // session(['category'  => $category]);
+
+        if($category == null){
+            $category = "未選択";
+        }
+
+        return view('product',[
+            'category' => $category,
             'products' => $products,
         ]);
+
     }
 
     /**
@@ -123,9 +158,6 @@ class ProductController extends Controller
      */
     public function show($product_id)
     {
-        // $id = Auth::id();
-        // $product_id = 1;
-
         $product = Product::where('product_id', $product_id)->firstOrFail();
 
         return view('products.product-page',[
