@@ -67,6 +67,26 @@
     <div id="graph">
         <h3 class="content-title">無くなりそうな日用品の在庫</h3>
 
+        <form action="{{ url('/product/'.Session::get('id'))}}" method="POST" enctype="multipart/form-data">
+        @csrf
+            <label for="category">カテゴリー</label>
+            <div>
+                <select type="hidden" name="category" id="category" value="{{ $category ?? '' }}">
+                    <option value="{{ $category ?? '' }}" style="display: none;">{{ $category ?? '' }}</option>
+                    <option value="">未選択</option>
+                    <option value="生活必需品">生活必需品</option>
+                    <option value="食料品">食料品</option>
+                    <option value="衛生用品">衛生用品</option>
+                    <option value="洗剤">洗剤</option>
+                    <option value="化学製品">化学製品</option>
+                    <option value="お風呂用品">お風呂用品</option>
+                    <option value="台所用品">台所用品</option>
+                    <option value="その他">その他</option>
+                </select>
+            </div>
+            <button type="submit">検索</button>
+        </form>
+
         @if(count($stocks) >= 5)
             <div class="graph-area">
                 <ul class="graph-container">

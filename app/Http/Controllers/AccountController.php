@@ -9,7 +9,7 @@ use App\Models\Account;
 
 class AccountController extends Controller
 {
-   
+
 
     /**
      * 会員登録をする処理
@@ -24,6 +24,7 @@ class AccountController extends Controller
             'password'=>'required|max:128',
         ]);
 
+    
         //会員登録作成
         Account::create([
             'account_name'=> $request->account_name,
@@ -33,7 +34,8 @@ class AccountController extends Controller
 
         return view('auth.login');
     }
-
+    
+    
     /**
      * ログインをする処理
      *
