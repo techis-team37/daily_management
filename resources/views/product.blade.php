@@ -72,14 +72,14 @@
             <div>
                 <select name="category" id="category" value="{{ $category ?? '' }}">
                     <option value="{{ $category ?? '' }}" style="display: none;">{{ $category ?? '' }}</option>
-                    <option value="null">未選択</option>
-                    <option value="生活必需品">生活必需品</option>
-                    <option value="食料品">食料品</option>
-                    <option value="衛生用品">衛生用品</option>
-                    <option value="洗剤">洗剤</option>
-                    <option value="化学製品">化学製品</option>
-                    <option value="お風呂用品">お風呂用品</option>
-                    <option value="台所用品">台所用品</option>
+                    <option value="null">全て</option>
+                    <option value="食品">食品</option>
+                    <option value="飲料">飲料</option>
+                    <option value="消耗品">消耗品</option>
+                    <option value="掃除用品">掃除用品</option>
+                    <option value="化粧品">化粧品</option>
+                    <option value="医薬品">医薬品</option>
+                    <option value="ペット用品">ペット用品</option>
                     <option value="その他">その他</option>
                 </select>
             </div>

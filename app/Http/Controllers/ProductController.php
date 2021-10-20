@@ -52,7 +52,7 @@ class ProductController extends Controller
         }
 
         if($category == null){
-            $category = "未選択";
+            $category = "全て";
         }
 
         return view('mypage',[
@@ -95,7 +95,7 @@ class ProductController extends Controller
         // session(['category'  => $category]);
 
         if($category == null){
-            $category = "未選択";
+            $category = "全て";
         }
 
         return view('product',[
