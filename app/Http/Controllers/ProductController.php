@@ -26,14 +26,15 @@ class ProductController extends Controller
         $stocks = array();
 
         if (isset($category)) {
-            $products = Product::where('category', $category)
+            $products = Product::where('account_id', $id)
+                                ->where('category', $category)
                                 ->orderBy('created_at', 'desc')
                                 ->limit(4)
                                 ->get();
 
-            $products_graph = Product::where('category', $category)
+            $products_graph = Product::where('account_id', $id)
+                                    ->where('category', $category)
                                     ->orderBy('stock', 'asc')
-                                    ->limit(8)
                                     ->get();
         } else {
             $products = Product::where('account_id', $id)
@@ -43,7 +44,6 @@ class ProductController extends Controller
 
             $products_graph = Product::where('account_id', $id)
                                 ->orderBy('stock', 'asc')
-                                ->limit(8)
                                 ->get();
         }
 
@@ -52,7 +52,7 @@ class ProductController extends Controller
         }
 
         if($category == null){
-            $category = "未選択";
+            $category = "すべて";
         }
 
         return view('mypage',[
@@ -83,7 +83,8 @@ class ProductController extends Controller
         // dd($category);
 
         if (isset($category)) {
-            $products = Product::where('category', $category)
+            $products = Product::where('account_id', $id)
+                                ->where('category', $category)
                                 ->orderBy('created_at', 'desc')
                                 ->get();
         } else {
@@ -95,7 +96,7 @@ class ProductController extends Controller
         // session(['category'  => $category]);
 
         if($category == null){
-            $category = "未選択";
+            $category = "すべて";
         }
 
         return view('product',[

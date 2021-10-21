@@ -65,15 +65,15 @@
     </div>
 
     <div id="graph">
-        <h3 class="content-title">無くなりそうな日用品の在庫</h3>
+        <h3 class="content-title">日用品の在庫</h3>
 
-        <form action="{{ url('/product/'.Session::get('id'))}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('/product/'.Session::get('id'))}}" method="POST" enctype="multipart/form-data" class="search">
         @csrf
             <label for="category">カテゴリー</label>
             <div>
                 <select type="hidden" name="category" id="category" value="{{ $category ?? '' }}">
                     <option value="{{ $category ?? '' }}" style="display: none;">{{ $category ?? '' }}</option>
-                    <option value="">未選択</option>
+                    <option value="">すべて</option>
                     <option value="生活必需品">生活必需品</option>
                     <option value="食料品">食料品</option>
                     <option value="衛生用品">衛生用品</option>
@@ -86,6 +86,7 @@
             </div>
             <button type="submit">検索</button>
         </form>
+
 
         @if(count($stocks) >= 5)
             <div class="graph-area">
@@ -115,7 +116,7 @@
                 <ul class="products-container">
                     @foreach($products as $product)
                         <a href="{{ url('/show/'.$product->product_id) }}">
-                            <li class="products-content products-content-1">
+                            <li class="products-content">
                             @if($product -> image !== null)
                                 <img src="{{ asset('/storage/'.$product -> image) }}" alt="画像が見つかりません">
                             @else

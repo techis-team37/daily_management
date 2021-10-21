@@ -66,13 +66,13 @@
 
     <div id="products">
 
-    <form action="{{ url('/products/'.Session::get('id')) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ url('/products/'.Session::get('id')) }}" method="POST" enctype="multipart/form-data" class="search">
         @csrf
             <label for="category">カテゴリー</label>
             <div>
                 <select name="category" id="category" value="{{ $category ?? '' }}">
                     <option value="{{ $category ?? '' }}" style="display: none;">{{ $category ?? '' }}</option>
-                    <option value="null">未選択</option>
+                    <option value="null">すべて</option>
                     <option value="生活必需品">生活必需品</option>
                     <option value="食料品">食料品</option>
                     <option value="衛生用品">衛生用品</option>
@@ -84,7 +84,7 @@
                 </select>
             </div>
             <button type="submit">検索</button>
-        </form>
+    </form>
 
         @if(count($products) > 0)
             <div class="products-area">
