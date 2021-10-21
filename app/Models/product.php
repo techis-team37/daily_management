@@ -14,6 +14,11 @@ class Product extends Model
         return $this->hasMany('App\Account');
     }
 
+    public function category()
+    {
+        return $this->hasOne('App\Product');
+    }
+
     /**
      * 
      * 

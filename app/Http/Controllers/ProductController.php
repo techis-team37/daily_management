@@ -16,29 +16,49 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index(Request $request ,$id)
     {
-        // $id = Auth::id();
-        // $id = 1;
+        $category = $request->category;
+        if($category == "null"){
+            $category = null;
+        }
+        session(['category'  => $request->category]);
         $stocks = array();
 
-        $products = Product::where('account_id', $id)
-                            ->orderBy('created_at', 'desc')
-                            ->limit(4)
-                            ->get();
+        if (isset($category)) {
+            $products = Product::where('category', $category)
+                                ->orderBy('created_at', 'desc')
+                                ->limit(4)
+                                ->get();
 
-        $products_graph = Product::where('account_id', $id)
-                            ->orderBy('stock', 'asc')
-                            ->limit(8)
-                            ->get();
+            $products_graph = Product::where('category', $category)
+                                    ->orderBy('stock', 'asc')
+                                    ->limit(8)
+                                    ->get();
+        } else {
+            $products = Product::where('account_id', $id)
+                                ->orderBy('created_at', 'desc')
+                                ->limit(4)
+                                ->get();
+
+            $products_graph = Product::where('account_id', $id)
+                                ->orderBy('stock', 'asc')
+                                ->limit(8)
+                                ->get();
+        }
 
         foreach($products_graph as $product_graph){
             $stocks[$product_graph -> product_name] = $product_graph -> stock;
         }
 
+        if($category == null){
+            $category = "未選択";
+        }
+
         return view('mypage',[
             'products' => $products,
             'stocks' => $stocks,
+            'category' => $category,
         ]);
     }
 
@@ -47,16 +67,42 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index_product($id)
+    public function index_product(Request $request ,$id)
     {
+        $category = $request->category;
 
-        $products = Product::where('account_id', $id)
-                            ->orderBy('created_at', 'desc')
-                            ->get();
+        if(isset($category)){
+            $category = $request->category;
+            if($category == "null"){
+                $category = null;
+            }
+        }else {
+            $category = session('category');
+        }
+
+        // dd($category);
+
+        if (isset($category)) {
+            $products = Product::where('category', $category)
+                                ->orderBy('created_at', 'desc')
+                                ->get();
+        } else {
+            $products = Product::where('account_id', $id)
+                                ->orderBy('created_at', 'desc')
+                                ->get();
+        }
+
+        // session(['category'  => $category]);
+
+        if($category == null){
+            $category = "未選択";
+        }
 
         return view('product',[
+            'category' => $category,
             'products' => $products,
         ]);
+
     }
 
     /**
@@ -112,9 +158,6 @@ class ProductController extends Controller
      */
     public function show($product_id)
     {
-        // $id = Auth::id();
-        // $product_id = 1;
-
         $product = Product::where('product_id', $product_id)->firstOrFail();
 
         return view('products.product-page',[
@@ -191,6 +234,9 @@ class ProductController extends Controller
      */
     public function destroy($product_id)
     {
+        $delete_image = Product::where('product_id', $product_id)->value('image');
+        Storage::delete('public/'.$delete_image);
+
         $account = Product::where('product_id', $product_id)
                             ->firstOrFail();
 

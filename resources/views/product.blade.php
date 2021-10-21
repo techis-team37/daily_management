@@ -66,6 +66,26 @@
 
     <div id="products">
 
+    <form action="{{ url('/products/'.Session::get('id')) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+            <label for="category">カテゴリー</label>
+            <div>
+                <select name="category" id="category" value="{{ $category ?? '' }}">
+                    <option value="{{ $category ?? '' }}" style="display: none;">{{ $category ?? '' }}</option>
+                    <option value="null">未選択</option>
+                    <option value="生活必需品">生活必需品</option>
+                    <option value="食料品">食料品</option>
+                    <option value="衛生用品">衛生用品</option>
+                    <option value="洗剤">洗剤</option>
+                    <option value="化学製品">化学製品</option>
+                    <option value="お風呂用品">お風呂用品</option>
+                    <option value="台所用品">台所用品</option>
+                    <option value="その他">その他</option>
+                </select>
+            </div>
+            <button type="submit">検索</button>
+        </form>
+
         @if(count($products) > 0)
             <div class="products-area">
                 <ul class="products-container">
