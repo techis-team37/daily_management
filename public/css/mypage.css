@@ -210,11 +210,15 @@
 #products .products-area .products-container .products-content .quantity{
     font-size: 2.3rem;
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
     margin-top: 40px;
 }
 
 #products .products-area .products-container .products-content .quantity .quantity-title{
     margin-right: 50px;
+}
+
+#products .products-area .products-container .products-content .quantity .product-date-area{
+    margin-left: 20px;
 }

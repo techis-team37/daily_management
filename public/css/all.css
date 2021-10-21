@@ -130,3 +130,14 @@ li{
     top: 120px;
     display: flex;
 }
+
+@media screen and (max-width:740px) {
+    #main-header .header-content .project-title-area img{
+        margin-right: 20px;
+        margin-left: 0px;
+    }
+
+    #nav{
+        width: 100%;
+    }
+}
