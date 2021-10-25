@@ -72,7 +72,7 @@
             <label for="category">カテゴリー</label>
             <div>
                 <select name="category" id="category" value="{{ $category ?? '' }}">
-                    <option value="{{ $category ?? '' }}" style="display: none;">{{ $category ?? '' }}</option>
+                    <option value="{{ $category ?? '' }}" style="display: none;" disabled selected hidden>{{ $category ?? '' }}</option>
                     <option value="null">すべて</option>
                     <option value="食品">食品</option>
                     <option value="飲料">飲料</option>
