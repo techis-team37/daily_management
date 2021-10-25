@@ -1,32 +1,33 @@
 @charset "utf-8";
 
-html{
+html {
     font-size: 10px;
     font-family: 'Charter';
 }
 
-body{
+body {
     width: 100%;
     height: 100vh;
     overflow: hidden;
     background: #FFF8E0;
 }
 
-img{
+img {
     width: 100%;
     height: 100%;
 }
 
-a{
+a {
     text-decoration: none;
     color: #000;
 }
 
-#main{
+#main {
     width: 100%;
 }
 
-.register-content, .login-content{
+.register-content,
+.login-content {
     width: 65%;
     position: absolute;
     top: 50%;
@@ -34,48 +35,47 @@ a{
     transform: translate(-50%, -53%);
 }
 
-.form-header{
+.form-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     margin-bottom: 50px;
 }
 
-.form-header .title-area{
+.form-header .title-area {
     display: flex;
     justify-content: center;
     align-items: flex-start;
 }
 
-.form-header .title-area .logo-area img{
+.form-header .title-area .logo-area img {
     width: 70px;
     height: 70px;
     margin-right: 30px;
 }
 
-.form-header .title-area .project-title-area{
+.form-header .title-area .project-title-area {
     font-size: 5rem;
 }
 
-.form-header .page-title{
+.form-header .page-title {
     font-size: 3rem;
     font-weight: inherit;
     border-bottom: 1px solid #000;
 }
 
-.form-body{
-    width: 90%;
+.form-body {
     border: 1px solid #000;
     padding: 50px 80px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.login-content .form-body{
+.login-content .form-body {
     padding: 100px 80px;
 }
 
-.form-body .input-area{
+.form-body .input-area {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,29 +83,29 @@ a{
     margin-bottom: 40px;
 }
 
-.form-body .input-area:last-of-type{
+.form-body .input-area:last-of-type {
     margin-bottom: 0px;
 }
 
-.form-body .input-area label{
+.form-body .input-area label {
     display: block;
     width: 180px;
     margin-right: 30px;
 }
 
-.form-body .input-area input{
+.form-body .input-area input {
     border: 1px solid #000;
     width: 70%;
     padding: 5px 10px;
 }
 
-.btn-list{
+.btn-list {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.btn-area{
+.btn-area {
     position: relative;
     display: block;
     width: 300px;
@@ -119,7 +119,7 @@ a{
     transition: all .3s;
 }
 
-.btn-area button{
+.btn-area button {
     position: absolute;
     top: 0;
     left: 0;
@@ -127,7 +127,7 @@ a{
     height: 100%;
 }
 
-.bg{
+.bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -141,20 +141,108 @@ a{
     transition: all .5s;
 }
 
-.btn-area:hover > .bg{
+.btn-area:hover>.bg {
     transform: translateX(0%);
 }
 
-.btn-area:hover{
+.btn-area:hover {
     color: #fff;
 }
 
-.error-msg{
+.error-msg {
     text-align: center;
     font-size: 2rem;
     color: rgb(172, 12, 12);
 }
 
-.error-msg .error-text{
+.error-msg .error-text {
     margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+    .register-content, .login-content{
+        width: 90%;
+    }
+
+    .form-body .input-area{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .form-header .title-area .project-title-area{
+        font-size: 3rem;
+    }
+
+    .form-header .page-title{
+        font-size: 2rem;
+    }
+
+    .form-body .input-area label{
+        margin-right: 10px;
+    }
+
+    .btn-area{
+        width: 24.286vw;
+        height: 53px;
+        font-size: 2rem;
+    }
+
+    .form-body{
+        padding: 50px;
+    }
+
+    .form-body .input-area{
+        display: block;
+        text-align: center;
+    }
+
+    .form-body .input-area label{
+        text-align: left;
+    }
+
+    .login-content .form-body{
+        padding: 35px 80px;
+    }
+
+    .form-body .input-area input{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .form-body{
+        padding: 20px;
+    }
+
+    .login-content .form-body{
+        padding: 20px;
+    }
+
+    .form-header{
+        margin-bottom: 20px;
+    }
+
+    .form-header .title-area .logo-area img{
+        width: 11.3636vw;
+        height: 11.3636vw;
+        margin-right: 10px;
+    }
+
+    .form-header .page-title{
+        font-size: 1rem;
+    }
+
+    .form-body .input-area{
+        margin-bottom: 20px;
+    }
+
+    .form-header .title-area .project-title-area{
+        font-size: 2rem;
+    }
+
+    .btn-area{
+        height: 36px;
+        font-size: 1rem;
+    }
 }

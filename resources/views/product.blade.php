@@ -66,7 +66,7 @@
 
     <div id="products">
 
-    <form action="{{ url('/products/'.Session::get('id')) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ url('/products/'.Session::get('id')) }}" method="POST" enctype="multipart/form-data" class="search">
         @csrf
             <label for="category">カテゴリー</label>
             <div>
@@ -84,7 +84,7 @@
                 </select>
             </div>
             <button type="submit">検索</button>
-        </form>
+    </form>
 
         @if(count($products) > 0)
             <div class="products-area">
@@ -100,17 +100,22 @@
                                 <div class="product-text-item">
                                     <h4 class="category">{{$product -> category}}</h4>
                                     <h2 class="product-title">{{$product -> product_name}}</h2>
-                                    @if($product -> use_by_date !== null)
-                                        <div class="product-time">
-                                            <p class="product-time-title">賞味期限</p>
-                                            <span class="product-time-date">{{$product -> use_by_date}}</span>
-                                        </div>
-                                    @endif
                                     <div class="quantity">
-                                        <p class="quantity-title">残り：{{$product -> stock}}</p>
-                                        @if($product -> best_by_date !== null)
-                                            <p class="quantity-number">{{$product -> best_by_date}}</p>
+                                        <div class="product-date-area">
+                                        @if($product -> use_by_date !== null)
+                                            <div class="product-time">
+                                                <p class="product-time-title">賞味期限：</p>
+                                                <span class="product-time-date">{{$product -> use_by_date}}</span>
+                                            </div>
                                         @endif
+                                        @if($product -> best_by_date !== null)
+                                        <div class="product-time">
+                                            <p class="product-time-title">消費期限：</p>
+                                            <span class="product-time-date">{{$product -> best_by_date}}</span>
+                                        </div>
+                                        @endif
+                                        </div>
+                                        <p class="quantity-title">残り：{{$product -> stock}}</p>
                                     </div>
                                 </div>
                             </li>
