@@ -74,4 +74,9 @@ $(function () {
         count++;
     })
 
+    if($('.graph-content').length > 10){
+        $(".graph-container").css('justify-content', 'flex-start');
+        $(".graph-container").css('overflow-x', 'scroll');
+    }
+
 });

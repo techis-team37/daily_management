@@ -1,4 +1,4 @@
-.content-title{
+.content-title {
     display: inline-block;
     border-left: 5px solid #9E912B;
     border-bottom: 5px solid #9E912B;
@@ -7,17 +7,17 @@
     margin-bottom: 50px;
 }
 
-#mypage{
+#mypage {
     flex-grow: 1;
     margin-top: 50px;
     padding: 0 50px;
 }
 
-#mypage #add-products-container{
+#mypage #add-products-container {
     margin-bottom: 80px;
 }
 
-#mypage #add-products-container .add-products-content{
+#mypage #add-products-container .add-products-content {
     position: relative;
     width: 60%;
     margin-left: auto;
@@ -28,7 +28,7 @@
     padding: 30px;
 }
 
-#mypage #add-products-container .add-products-content a{
+#mypage #add-products-container .add-products-content a {
     position: absolute;
     top: 0;
     left: 0;
@@ -36,40 +36,59 @@
     height: 100%;
 }
 
-#mypage #add-products-container .add-products-content svg{
+#mypage #add-products-container .add-products-content svg {
     width: 80px;
     height: 80px;
     margin-bottom: 30px;
 }
 
-#mypage #add-products-container .add-products-content .add-products-title{
+#mypage #add-products-container .add-products-content .add-products-title {
     font-size: 3rem;
     font-weight: inherit;
 }
 
-#graph{
+#graph {
     margin-bottom: 80px;
 }
 
-#graph .graph-area{
+#graph .graph-area {
     width: 100%;
 }
 
-#graph .graph-area .graph-container{
+#graph .graph-area .graph-container {
     display: flex;
     justify-content: space-evenly;
     align-items: flex-end;
-    max-width: 750px;
+    width: 750px;
     max-height: 500px;
     margin: 0 auto;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
-#graph .graph-area .graph-container .graph-content{
+::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+}
+
+/*スクロールバーの軌道*/
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+}
+
+/*スクロールバーの動く部分*/
+::-webkit-scrollbar-thumb {
+    background-color: #dfca81;
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .3);
+}
+
+
+#graph .graph-area .graph-container .graph-content {
     text-align: center;
 }
 
-#graph .graph-area .graph-container .graph-content .graph-title{
+#graph .graph-area .graph-container .graph-content .graph-title {
     display: block;
     font-size: 1.5rem;
     writing-mode: vertical-rl;
@@ -80,16 +99,16 @@
     text-align: left;
 }
 
-#graph .graph-area .graph-container .graph-content .graph-item{
+#graph .graph-area .graph-container .graph-content .graph-item {
     position: relative;
     display: block;
     width: 50px;
     border: 1px solid #000;
-    margin: 0 5px;
+    margin: 0 12px;
     transition: all 1s;
 }
 
-#graph .graph-area .graph-container .graph-content .graph-item::after{
+#graph .graph-area .graph-container .graph-content .graph-item::after {
     position: absolute;
     left: -50px;
     bottom: -1px;
@@ -100,18 +119,18 @@
     background: #000;
 }
 
-#graph .graph-area .graph-container .graph-content .stock{
+#graph .graph-area .graph-container .graph-content .stock {
     display: inline-block;
     margin-top: 10px;
     font-size: 1.5rem;
 }
 
-.no-product{
+.no-product {
     text-align: center;
     font-size: 3rem;
 }
 
-.more-btn{
+.more-btn {
     position: relative;
     display: inline-block;
     border: 1px solid #000;
@@ -123,7 +142,7 @@
     transition: all .5s;
 }
 
-.more-btn .bg{
+.more-btn .bg {
     display: block;
     position: absolute;
     top: 0;
@@ -136,48 +155,52 @@
     transition: all .5s;
 }
 
-.more-btn:hover{
+.more-btn:hover {
     color: #fff;
     border: 1px solid #fff;
 }
 
-.more-btn:hover > .bg{
+.more-btn:hover>.bg {
     left: 0;
 }
 
-#products{
+#products {
     width: 100%;
     margin-bottom: 50px;
 }
 
-#products .products-area{
+#products .products-area {
     text-align: center;
 }
 
-#products .products-area .products-container .products-content{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    background: #fff;
+#products .products-area .products-container a {
+    display: block;
     margin-bottom: 50px;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
+}
+
+#products .products-area .products-container .products-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #fff;
     padding: 30px;
 }
 
-#products .products-area .products-container .products-content img{
+#products .products-area .products-container .products-content img {
     width: 200px;
     height: 200px;
     object-fit: cover;
 }
 
-#products .products-area .products-container .products-content .product-text-item{
+#products .products-area .products-container .products-content .product-text-item {
     position: relative;
     flex-grow: 1;
 }
 
-#products .products-area .products-container .products-content .category{
+#products .products-area .products-container .products-content .category {
     position: absolute;
     top: 0;
     left: 0;
@@ -186,35 +209,224 @@
     margin-left: 20px;
 }
 
-#products .products-area .products-container .products-content .product-title{
+#products .products-area .products-container .products-content .product-title {
     font-size: 2.6rem;
     margin-top: 80px;
 }
 
-#products .products-area .products-container .products-content .product-time{
+#products .products-area .products-container .products-content .product-time {
     display: flex;
     justify-content: right;
     align-items: center;
 }
 
 
-#products .products-area .products-container .products-content .product-time .product-time-title{
+#products .products-area .products-container .products-content .product-time .product-time-title {
     font-size: 1.8rem;
     margin-right: 10px;
 }
 
-#products .products-area .products-container .products-content .product-time .product-time-date{
+#products .products-area .products-container .products-content .product-time .product-time-date {
     font-size: 1.5rem;
 }
 
-#products .products-area .products-container .products-content .quantity{
+#products .products-area .products-container .products-content .quantity {
     font-size: 2.3rem;
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
     margin-top: 40px;
 }
 
-#products .products-area .products-container .products-content .quantity .quantity-title{
+#products .products-area .products-container .products-content .quantity .quantity-title {
     margin-right: 50px;
+}
+
+#products .products-area .products-container .products-content .quantity .product-date-area {
+    margin-left: 20px;
+}
+
+
+@media screen and (max-width:1200px) {
+
+    #mypage #add-products-container .add-products-content {
+        position: relative;
+        width: 44.5vw;
+        padding: 2.5vw;
+    }
+
+    #mypage #add-products-container .add-products-content svg {
+        width: 6.667vw;
+        height: 6.667vw;
+    }
+
+    #mypage #add-products-container .add-products-content .add-products-title {
+        font-size: 2.5vw;
+    }
+
+    #products .products-area .products-container a {
+        width: 90%;
+    }
+
+}
+
+@media screen and (max-width:850px) {
+    #graph .graph-area .graph-container {
+        width: 88.235vw;
+    }
+
+    #graph .graph-area .graph-container .graph-content .graph-title {
+        display: block;
+        font-size: 1.5rem;
+        writing-mode: vertical-rl;
+        height: 150px;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+    }
+
+    #graph .graph-area .graph-container .graph-content .graph-item {
+        position: relative;
+        display: block;
+        width: 50px;
+        border: 1px solid #000;
+        margin: 0 12px;
+        transition: all 1s;
+    }
+
+    #graph .graph-area .graph-container .graph-content .graph-item::after {
+        position: absolute;
+        left: -50px;
+        bottom: -1px;
+        display: block;
+        content: "";
+        width: 300%;
+        height: 1px;
+        background: #000;
+    }
+
+    #graph .graph-area .graph-container .graph-content .stock {
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 1.5rem;
+    }
+
+}
+
+@media screen and (max-width:800px) {
+
+    #mypage {
+        padding: 0 6.25vw;
+    }
+
+    #products .products-area .products-container a {
+        margin-bottom: 6.25vw;
+    }
+
+    #products .products-area .products-container .products-content {
+        padding: 3.75vw;
+    }
+
+    #products .products-area .products-container .products-content .category {
+        font-size: 2.5vw;
+        margin-left: 2.5vw;
+    }
+
+    #products .products-area .products-container .products-content .product-title {
+        font-size: 3.25vw;
+        margin-top: 10vw;
+    }
+
+    #products .products-area .products-container .products-content .product-time .product-time-title {
+        font-size: 2.25vw;
+        margin-right: 2.5vw;
+    }
+
+    #products .products-area .products-container .products-content .product-time .product-time-date {
+        font-size: 1.875vw;
+    }
+
+    #products .products-area .products-container .products-content .quantity {
+        font-size: 2.5vw;
+        margin-top: 5vw;
+    }
+
+    #products .products-area .products-container .products-content .quantity .quantity-title {
+        margin-right: 6.25vw;
+    }
+
+    #products .products-area .products-container .products-content .quantity .product-date-area {
+        margin-left: 2.5vw;
+    }
+
+}
+
+@media screen and (max-width:650px) {
+    .content-title{
+        font-size: 3.0769vw;
+        border-left: 0.769vw solid #9E912B;
+        border-bottom: 0.769vw  solid #9E912B;
+    }
+
+    #mypage #add-products-container {
+        margin-bottom: 12.3077vw;
+    }
+
+    #mypage #add-products-container .add-products-content {
+        width: 90%;
+        border-radius: 6.923vw;
+        padding: 4.615vw;
+    }
+
+    #mypage #add-products-container .add-products-content svg {
+        width: 12.3077vw;
+        height: 12.3077vw;
+        margin-bottom: 4.615vw;
+    }
+
+    #mypage #add-products-container .add-products-content .add-products-title {
+        font-size: 4.615vw;
+    }
+
+    #products .products-area .products-container .products-content {
+        display: block;
+    }
+
+    #products .products-area .products-container .products-content .category {
+        position: absolute;
+        top: -25px;
+        margin-left: 0;
+    }
+
+    #products .products-area .products-container .products-content .quantity .product-date-area {
+        margin-left: 0;
+    }
+
+    #products .products-area .products-container .products-content .product-time .product-time-title {
+        font-size: 10px;
+    }
+
+    #products .products-area .products-container .products-content .product-time .product-time-date {
+        font-size: 10px;
+    }
+
+    .more-btn {
+        padding: 3.0769vw 6.15385vw;
+        font-size: 3.0769vw;
+        margin: 4.6154vw 0;
+    }
+
+    #graph .graph-area .graph-container .graph-content .graph-item{
+        width: 7.692vw;
+    }
+
+    #graph .graph-area .graph-container .graph-content .graph-title{
+        font-size: 10px;
+    }
+
+    .no-product {
+        font-size: 3.0769vw;
+    }
+
 }
