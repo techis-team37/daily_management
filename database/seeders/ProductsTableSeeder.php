@@ -18,7 +18,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'product_id' => '1',
                 'product_name' => 'トイレットペーパー',
-                'category' => 'トイレ',
+                'category' => '消耗品',
                 'stock' => '10',
                 'account_id' => '1',
                 'created_at' => date('Y-m-d'),
@@ -27,7 +27,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'product_id' => '2',
                 'product_name' => '食器洗剤',
-                'category' => 'キッチン',
+                'category' => '掃除用品',
                 'stock' => '2',
                 'account_id' => '1',
                 'created_at' => date('Y-m-d'),
@@ -36,7 +36,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'product_id' => '3',
                 'product_name' => 'スポンジ',
-                'category' => 'キッチン',
+                'category' => '掃除用品',
                 'stock' => '3',
                 'account_id' => '2',
                 'created_at' => date('Y-m-d'),
@@ -45,7 +45,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'product_id' => '4',
                 'product_name' => '歯ブラシ',
-                'category' => '洗面所',
+                'category' => '消耗品',
                 'stock' => '1',
                 'account_id' => '2',
                 'created_at' => date('Y-m-d'),

@@ -22,6 +22,7 @@ class ProductController extends Controller
         if($category == "null"){
             $category = null;
         }
+
         session(['category'  => $request->category]);
         $stocks = array();
 
@@ -54,6 +55,9 @@ class ProductController extends Controller
         if($category == null){
             $category = "すべて";
         }
+
+        // dd($category);
+
 
         return view('mypage',[
             'products' => $products,
@@ -92,8 +96,6 @@ class ProductController extends Controller
                                 ->orderBy('created_at', 'desc')
                                 ->get();
         }
-
-        // session(['category'  => $category]);
 
         if($category == null){
             $category = "すべて";

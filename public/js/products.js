@@ -25,7 +25,7 @@ $(function () {
     $('.best_by_date').css('pointer-events', 'none');
 
     var text = $('[name=category] option:selected').text();
-    if(text === "食料品"){
+    if(text === "食品","飲料"){
         $(".best_by_date").prop("disabled", false);
         $('.best_by_date').css('opacity', '1');
         $('.best_by_date').css('pointer-events', 'all');
@@ -38,7 +38,7 @@ $(function () {
 
     $('[name=category]').on('change', function() {
         var text = $('[name=category] option:selected').text();
-        if(text === "食料品"){
+        if(text === "食品","飲料"){
             $(".best_by_date").prop("disabled", false);
             $('.best_by_date').css('opacity', '1');
             $('.best_by_date').css('pointer-events', 'all');
