@@ -16,9 +16,7 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-})->name('login');
+Route::get('/', function(){return redirect('login');});
 
 //Route::resource('/account',AccountController::class);
 
