@@ -24,4 +24,6 @@ class Account extends Model
         'email',
         'password',
     ];
+
+    protected $primarykey = 'account_id';
 }
