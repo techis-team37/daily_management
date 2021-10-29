@@ -124,7 +124,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request, $id)
+    public function store(ProductRequest $request)
     {
         // オリジナルの名前を残す場合
         if($request -> image !== null){
@@ -147,10 +147,10 @@ class ProductController extends Controller
         $product->stock = $request->stock;
         $product->best_by_date = $request->best_by_date;
         $product->use_by_date = $request->use_by_date;
-        $product->account_id = $id;
+        $product->account_id = session('id');
         $product->save();
 
-        return redirect('/product/'.$id);
+        return redirect('/product/'.session('id'));
     }
 
     /**
