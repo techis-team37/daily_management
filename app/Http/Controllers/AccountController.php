@@ -45,7 +45,7 @@ class AccountController extends Controller
     {
         $account = Account::where('email', $request->email)->first();
         if ($account == false){
-            return view('login', ['login_error' => '1']);
+            return view('auth.login', ['login_error' => '1']);
         }
 
         // 一致
